@@ -1,0 +1,159 @@
+\begin{enumerate}
+    \item{physikalische Beschreibung/Umcodierung}
+
+        Welches technisches System passt zu meiner Systemklasse?
+        Unser System hat D-Verhalten. D-Verhalten zeigen z.B. Tachometer.
+        Schwingung??
+        Wie entsteht ein DTs Glied? Schaltung von...?
+    
+        Umcodierungstabellen
+
+        \textbf{Darstellung}
+        % \begin{tabular}{l|l|l|l}
+        %     \centering
+        %         0 & physikalische Darstellung & normierte Darstellung & systemtheoretische Darstellung  \\ \hline
+        %         Eingang & Durchfluss Wasserhahn & 0-100\% & u \hline
+        %         Ausgang & Höhe des Wassers & V/V_ges & y \hline
+        %         Zustand & Höhe des Wassers & cfaef & x_1, x_2 ... je nach Ordnung \hline
+        %         Parameter & Masse, Länge,Trägheitsmoment, Kapazität, Induktivität & T, $T_D$, D
+        % \end{tabular}
+
+        Die Normierung und Festlegung der Einheiten ist wichtig, damit ich bei den Plots weiß, in welcher Zeitskala ich arbeite.
+        Wenn ich alles auf ... normiere, ist die Zeitkonstante in s/min/h.
+        Ich habe mich entschieden für die Zeitkonstanten in s oder min oder h.
+        Eine Normierung des Eingangs auf den Bereich 0-100\% ist häufig sinnvoll, da dann die statische Verstärkung angibt, auf welchem Endwert ich bei 100\% lande. (bei P-Gliedern)
+        
+        Eine der häufigsten Fehler ist es die Achsen der Plots nicht richtig zu beschriften, sodass man die Einheiten nicht kennt.
+        beschriften: [t]=s oder t in s oder t/s oder "Zeit in Sekunden"
+
+    \item{Explizite Darstellung des Übertragungsoperators}
+    
+    \item{Zustandsraumbeschreibung (implizite Systembeschreibung)}
+    
+    \item{Ein-Ausgangsdifferentialgleichung}
+
+    \item{Zusammenhänge der Funktionen G(s), g(t), h(t) und G(s)/s}
+        ()
+        
+
+    \item{Übertragungsfunktion/Sprungantwort}
+        Die Übertragungsfunktion ist die Systembeschreibung im Laplace-Bereich.
+        Sie berücksichtigt die Anfangswerte nicht.
+        Sie geht aus der E/A-Differentialgleichung hervor, wobei die Anfangswerte auf Null gesetzt werden.
+        Folglich hat sie eine geringere Aussagekraft, als die E/A-Differentialgleichung, bei der die Anfangswerte immer mit dabei stehen.
+        Es ist ein Leichtes aus der Übertragungsfunktion auf die E/A-Differentialgleichung zu schließen.\\
+        Der Vorteil der Laplace-Transformation ist, dass komplizierte Operationen der Analysis, wie Faltung sich im Laplace-Bereich durch einfache Multiplikation äußern.
+        Sofern man in der Klasse der linearen zeitinvariante Systemen (LTI) ist, sind die Laplace-Transformatierten rationale Funktionen. 
+        Damit geht Polynomfunktion, Integration, usw.
+        Dadurch kann man die klassische Algebra verwenden.
+
+        
+
+        Durch Überkreuzmultiplikation von 
+            \begin{equation}
+                G(s)=\frac{Y(s)}{U(s)}=\frac{s}{4s^2+0.5s+1}
+            \end{equation}
+        gelange ich zu
+            \begin{equation}
+                (s)Y(s) = (4s^2+0.5s+1)U(s)
+            \end{equation}
+        unter Beachtung von
+            \begin{equation}
+                4\ddot{y}+0.5y+1=u
+            \end{equation}
+            Anfangswerte dot y=0 und y
+
+        \begin{enumerate}
+            \item{Parametrische Darstellung}\\
+                Die Parametrische Darstellung erhält man, indem man die Laplace-Rücktransformierte der Übertragungsfunktion bildet.
+                Das macht man wie folgt:\\
+                    Die Symbolic Toolbox macht die Ausführung symbolischer mathematischer Berechnungen möglich.\\
+                    Mit dem Befehl\\
+                        \texttt{syms s}\\
+                    erstelle ich mir eine symbolische Variable s.\\
+                    Mit\\
+                        \texttt{G(s)=(1*s)/(4*s\^{}2+0.5*s+1)}\\
+                    gebe ich die Übertragungsfunktion G(s) ein.
+                    
+                    Alternativ kann ich die Sprungantwort h(t) durch Integration der Übertragungsfunktion bestimmen, gebe ich den Befehl \\
+                        \texttt{ilaplace(G(s)/s)}\\
+                    ein.
+
+
+            \item{Nichtparametrische Darstellung}
+                
+                    \item{Plot mit MATLAB}
+                        Mit dem Wissen der Parametrischen Darstellung 
+                        t=[0:0.1:10]
+                        plot(t, Antwort)
+                        Da t ein Vektor ist, muss man beim Multiplizieren das Punktprodukt (Hadammad-Produkt) verwenden.
+                        Alternativ kann ich den Befehl fplot() verwenden.
+                        Mit den Befehlen xlabel und ylabel kann ich meine Achsen beschriften.
+                        
+			\includegraphics[width=\textwidth]{../MATLAB/ControlSystemToolbox/symbolic_Sprungantwort.pdf}\\
+
+
+                                Die Control System Toolbox dient der systematischen Analyse, dem Entwurf und der Optimierung linearer Systeme.\\
+                                Mit dem folgenden Matlab-Skript kann ich die Übertragungsfunktion G(s) in MATLAB eingeben.
+                                    \lstinputlisting[style=Matlab-editor, caption={pretty}]{../MATLAB/ControlSystemToolbox/cst_DTs.m}
+                                Lässt man sich G(s) in der Konsole anzeigen, wird diese folgendermaßen dargestellt.
+                                    \begin{figure}[H]
+                                        \centering
+                                        \framebox{\includegraphics[width=0.7\textwidth]{../MATLAB/ControlSystemToolbox/cst_Uebertragungsfunktion.png}}
+                                        \caption{Übertragungsfunktion $DT_s-Glied$ (Control System Toolbox))}
+                                    \end{figure}
+                                Durch den Befehl \texttt{step(sys)} öffnet MATLAB ein neues Fenster mit der passenden Sprungantwort h(s) zu G(s) und stellt diese folgendermaßen dar.
+                                    \begin{figure}[H]
+                                        \centering
+                                        \includegraphics[width=\textwidth]{../MATLAB/ControlSystemToolbox/cst_Sprungantwort.eps}
+                                        \caption{Sprungantwort h(t) des $DT_s-Glieds$ (Control System Toolbox)}
+                                    \end{figure}
+                    \begin{itemize}
+                   
+                    \item{Plot mit Step-Funktion}
+                    \item{Plot mit Simulink}
+                \end{itemize}
+        \end{enumerate}
+
+    \item{Gewichtsfunktion/Impulsantwort}
+        Antwort auf einen Delta-Impuls.
+        \begin{enumerate}
+            \item{Parametrische Darstellung}
+            \item{Nichtparametrische Darstellung}
+                \begin{itemize}
+                    \item{Plot mit MATLAB}
+                    Durch den Befehl \texttt{impulse(sys)} öffnet MATLAB ein neues Fenster mit der passenden Sprungantwort h(s) zu G(s) und stellt diese folgendermaßen dar.
+                    \begin{figure}[H]
+                        \centering
+                        \includegraphics[width=\textwidth]{../MATLAB/ControlSystemToolbox/cst_Sprungantwort.eps}
+                        \caption{Sprungantwort h(t) des $DT_s-Glieds$ (Control System Toolbox)}
+                    \end{figure}
+
+                    
+                    Um die Gewichtsfunktion g(t) zu bestimmen, gebe ich den Befehl\\
+                        \texttt{ilaplace(G(s))}
+                    ein.
+                    Möchte ich mein Ergebnis g(t) weiterverwenden, dann definiere ich mir die symbolische Funktion\\
+                        \texttt{syms g(t)=ilaplace(G(s))}
+
+                    \item{Plot mit Step-Funktion}
+                    \item{Plot mit Simulink}
+                \end{itemize}
+        \end{enumerate}
+
+    \item{Frequenzgang}
+        \begin{enumerate}
+            \item{Parametrische Darstellung}
+            \item{Nichtparametrische Darstellung}
+                \begin{itemize}
+                    \item{Nyquist-Plot (Ortskurve)}
+                    \item{Bode-Plot}
+                    \item{Plot mit Simulink}
+                \end{itemize}
+        \end{enumerate}
+
+    \item{Pol-Nullstellen-Plot}
+
+    \item{Statische Kennlinie}
+
+\end{enumerate}

@@ -1,0 +1,288 @@
+\documentclass[
+  ngerman
+  ,12pt
+  ,pdftex
+]{article}
+
+\usepackage{graphicx}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{listings}
+\usepackage[ngerman]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+
+\hyphenation{Differential-gleichung}
+\hyphenation{Über-tragungs-ope-ra-tors}
+\hyphenation{E/A-Differential-gleichung}
+
+\begin{document}
+
+\begin{titlepage}
+  \begin{center}
+      {\Huge \textbf{Signale und Systeme - Systemanalyse}}\\[1.5cm]
+      {\Large Analyse des Systems}\\[1cm]
+      {\Huge PT$_{1}$ mit negativer Verstärkung}\\[7cm]
+      {\large Matrikelnummer: \textbf{6130555}}\\[0.5cm]
+      {\large Kurs: TINF21B3}\\[0.5cm]
+      {\large Abgabedatum 16.12.2022}
+      \vfill
+  \end{center}
+\end{titlepage}
+\newpage
+\tableofcontents
+\newpage
+
+\section{Einleitung}
+Das System, welches im Folgenden behandelt wird hat die Übertragungsfunktion
+\begin{equation*}
+  G(s)=\frac{K}{T*s+1}
+\end{equation*}\\
+und mit den Werten $K=-25$ und $T=10$ ergibt sich daraus die neue Übertragungsfunktion
+\begin{equation*}
+  G(s)=\frac{-25}{10s+1} .
+\end{equation*}\\
+Um das System analysieren zu können, haben wir das System mit den entsprechenden Werten in Simulink simuliert und die Sprungantwort betrachet.\\
+Erst danach haben wir mit Matlab gearbeitet und dort die entsprechenden Graphen plotten lassen. Mit Hilfe des Befehls \texttt{sys = tf([-25],[10 1])} haben wir unser System in Matlab erzeugt. Falls notwendig wird ein Sinus als Eingangssignal angenommen. %TODO: Stimmt das?
+% Das System ist wie folgt zu klassifizieren:
+%TODO: Klassifizierung
+
+\section{Physikalische Beschreibung/Umcodierung}
+%CHRIS:
+  % Welches technisches System passt zu meiner Systemklasse?
+  % Unser System hat D-Verhalten. D-Verhalten zeigen z.B. Tachometer.
+  % Schwingung??
+  % Wie entsteht ein DTs Glied? Schaltung von...?
+
+  %ICH:
+  % PT$_{1}$ mit negativer Verstärkung
+  % Systembeschreibung mit physikalischer Darstellung
+  % Systembeschreibung in systemtheoretischer Darstellung
+
+  % Mein System hat P-Verhalten. P deutet darauf hin 
+  % P zeigt Raumtemperatur.
+\textbf{Darstellung}
+%Beispiel Badewanne
+  %Eingang: Durchfluss Wasserhahn & 1/3600 m3/s oder V/Vges in %
+  %Ausgang: Höhe des Wassers
+  %Zustand: Höhe des Wassers
+  %Parameter: Fläche & & & Ti
+
+  %TODO Tabelle
+  %CHRIS:
+  % \begin{tabular}{l|l|l|l}
+        %     \centering
+        %         0 & physikalische Darstellung & normierte Darstellung & systemtheoretische Darstellung  \\ \hline
+        %         Eingang & Durchfluss Wasserhahn & 0-100\% & u \hline
+        %         Ausgang & Höhe des Wassers & V/V_ges & y \hline
+        %         Zustand & Höhe des Wassers & cfaef & x_1, x_2 ... je nach Ordnung \hline
+        %         Parameter & Masse, Länge,Trägheitsmoment, Kapazität, Induktivität & T, $T_D$, D
+        % \end{tabular}
+
+  %ICH:
+  \begin{tabular}{l| |l|l|l}
+    & Physikalisch & Normiert & Systemtheoretisch \\\hline\hline
+    Eingang & x & x & $u$ \\
+    Ausgang & x & x & $y$ \\
+    Zustand & x & x & $x_{1}$, $x_{2}$ \\
+    Parameter & Masse, etc. & x & $T_{1}$ \\   %, Länge, Kapazität, Induktivität, Trägheitsmoment
+  \end{tabular}
+
+
+% \begin{table}[]
+%   \begin{tabular}{l | l | l | l}
+%   & physikalische Darstellung & normierte Darstellung & sytematische Darstellung \\\hline
+%   Eingang   & Durchfluss Wasserhahn     &     & u                        \\
+%   Ausgang   & Füll höhe Wasser          &     & y                        \\
+%   Zustand   & Höhe des Wassers          &     & x1,x2                    \\
+%   Parameter & Fläche        &                 & %, Masse, Länge, Kapazität, Induktivität           
+%   \end{tabular}
+%   \caption{}
+%   \label{tab:my-table}
+%   \end{table}
+
+%Ich habe mich für die Einheit/Zeitkonstanten ... entschieden.
+%Die Normierung und Festlegung der Einheiten ist wichtig, damit ich bei den Plots weiß, in welchen Zeitskalen ich arbeite. Wenn ich alles auf Si normiere ist die Zeitkonstante üblicherweise in Sekunden/Minuten/Stunden.Ich habe mich entschieden für die Zeitkonstanten in s oder min oder h.
+%Eine Normierung des Eingangs auf den Bereich 0 bis 100% ist häufig sinnvoll, da dann die statische Verstärkung angibt, auf welchem Endwert ich bei 100% (also max. Eingang) lande (bei P-Gliedern).
+
+%ACHSEN DER PLOTS RICHTIG BESCHRIFTEN, damit die Einheiten richtig abgelesen werden können!!!! Beschriften: [t]=s oder t in s oder t/s oder "Zeit in Sekunden"
+
+%Matlab Befehle: labelx/yaxis: entweder t/s oder t in s/sec./Sekunden oder Zeit in Sekunden
+
+\section{Explizite Darstellung des Übertragungsoperators} %TODO: Überarbeiten
+Die allgemeine explizite Form des Übertragungsoperators für ein lineares zeitinvariantes System ist (x(t) Formel Aufschrieb).
+Für unser konkretes System kann man das mit der symbolik-Toolbox in Matlab berechnen: syms t und expm liefert ....
+Die erzwungene Bewegung kann man aber nur dann explizit angeben, wenn man für u(tau) eine explizite Vorgabe hat. Das ist der Fall, wenn u(tau) beispielsweise ein Dirac-Impuls oder ... oder ein Sinusimpuls ist. In einem solchen Fall kann man das Integral analytisch ausrechnen. In meiner Arbeit wählen wir die Step-Funktion. Das heißt u(tau)=1 für tau>=0. Im konkreten erhalten wir die Formel, die ausgeplotet identisch ist, mit Darstellung in ...
+
+\section{Zustandsraumbeschreibung (implizite Systembeschreibung)}
+Mein System in neuer Zustandsraumdarstellung nach Transformation
+-> Zusandsraumdarstellung
+%TODO: FORMEL
+%y'''+3y'y^2+2y =u
+%Umgeschrieben y'''=-3y'y^2-2y+u
+%x_1= y
+%x_2= y'
+%x_3 = y''
+
+%x_1' = x_2
+%x_2' = x_3
+%x_3' = -3x_2x_1^2-2x_1+u
+
+%y=x_1
+%x_1(0) = y(0)
+%x_2(0) = y'(0)
+%x_3(0) = y''(0)
+
+%\begin{equation*}
+%     \dddot y + 3 \dot y*y^2+y = u  \\
+%   \end{equation*}
+
+%   \begin{equation*}
+%     \dddot y = -3 \dot y*y^2-2y+u \\
+%   \end{equation*}
+
+%   \begin{equation*}
+%     x_1 = y
+%   \end{equation*}
+
+%   \begin{equation*}
+%     x_2 = \dot y
+%   \end{equation*}
+
+%   \begin{equation*}
+%     x_3 = \ddot y
+%   \end{equation*}
+% \begin{equation*}
+%   \dot x_1 = x_2
+% \end{equation*}
+
+% \begin{equation*}
+%   \dot x_2 = x_3
+% \end{equation*}
+
+% \begin{equation*}
+%   \dot x_3 = -3x_2*x_1^2-2x_1+u 
+% \end{equation*}
+
+\section{Ein-/Ausgangsdifferentialgleichung}
+...
+
+\section{Zusammenhänge der Funktionen $G(s)$, $g(t)$, $h(t)$ und $\frac{G(s)}{s}$}
+%TODO: Diagramm
+...
+
+\section{Übertragungsfunktion/Sprungantwort}
+%TODO: Latex Zeilenumbrüche korrigieren
+Die Übertragungsfunktion ist die Systembeschreibung im Laplace-Bereich.\\
+Sie berücksichtigt die Anfangswerte nicht. Sie geht aus der E/A-Differential\-gleichung hervor, wobei die Anfangswerte auf Null gesetzt werden. Folglich hat sie eine geringere Aussagekraft, als die E/A-Differentialgleichung, bei der die Anfangswerte immer mit dabei stehen. Es ist ein Leichtes aus der Übertragungsfunktion auf die E/A-Differentialgleichung zu schließen.
+% Durch Überkreuzmultiplikation von $G(s)=\frac{Y(s)}{U(s)}=(...)$ gelangt man zu $(...)Y(s)=(...)U(s)$ und unter Beachtung von $s=\frac{d}{dt}$ zu $\ddot{y}+y=\dot{u}+u$ mit $y(0_{-})=y_{0}$, $y(0_{-})=\dot{y}_{0}$ und $u(0_{-})=u_{0}$. %TODO: ????
+\subsection{Parametrische Darstellung} %TODO
+%CHRIS:
+% Die Parametrische Darstellung erhält man, indem man die Laplace-Rücktransformierte der Übertragungsfunktion bildet.
+%Das macht man wie folgt:\\
+%Die Symbolic Toolbox macht die Ausführung symbolischer mathematischer Berechnungen möglich.\\
+%Mit dem Befehl\\
+%\texttt{syms s}\\
+%erstelle ich mir eine symbolische Variable s.\\
+%Mit\\
+%\texttt{G(s)=(1*s)/(4*s\^{}2+0.5*s+1)}\\
+% gebe ich die Übertragungsfunktion G(s) ein.
+
+%Alternativ kann ich die Sprungantwort h(t) durch Integration der Übertragungsfunktion bestimmen, gebe ich den Befehl \\
+%\texttt{ilaplace(G(s)/s)}\\
+%ein.
+
+%ICH:
+%ilaplace(G(s)/s), alternativ kann h(t) auch durch Integration von G(t) berechnet werden. h(t)=int(g(t))
+%Möchte ich mein Ergebnis g(t) weiter verwenden und nicht ans benutzen, dann definiere ich mir die symbolische Funktion syms g(t)
+
+%Alternativ kann die Übergangsfunktion aus der Gewichtsfunktion durch Integration erhalten werden.
+...
+\subsection{Nichtparametrische Darstellung}
+\subsubsection{Plot mit Matlab}
+%CHRIS:
+% Mit dem Wissen der Parametrischen Darstellung 
+%t=[0:0.1:10]
+%plot(t, Antwort)
+%Da t ein Vektor ist, muss man beim Multiplizieren das Punktprodukt (Hadammad-Produkt) verwenden.
+%Alternativ kann ich den Befehl fplot() verwenden.
+%Mit den Befehlen xlabel und ylabel kann ich meine Achsen beschriften.
+        
+%Die Control System Toolbox dient der systematischen Analyse, dem Entwurf und der Optimierung linearer Systeme.\\
+%Mit dem folgenden Matlab-Skript kann ich die Übertragungsfunktion G(s) in MATLAB eingeben.
+%\lstinputlisting[style=Matlab-editor, caption={pretty}]{../MATLAB/ControlSystemToolbox/cst_DTs.m}
+%Lässt man sich G(s) in der Konsole anzeigen, wird diese folgendermaßen dargestellt.
+                    
+%Durch den Befehl \texttt{step(sys)} öffnet MATLAB ein neues Fenster mit der passenden Sprungantwort h(s) zu G(s) und stellt diese folgendermaßen dar.
+...
+\subsubsection{Plot mit Step-Funktion}
+...
+\subsubsection{Plot mit Simulink}
+...
+
+\section{Gewichtsfunktion/Impulsantwort} %NICHT SICHER
+%CHRIS: Antwort auf einen Delta-Impuls.
+%Die Gewichtsfunktion kann aus der Übertragungsfunktion durch Ableiten erhalten werden. (Diagramm in Latex einbinden).
+%Alternativ kann die Gewichtsfunktion aus der Übertragungsfunktion durch Differention gewonnen werden.
+%Die Lösung von Matlab ist zwar die gleiche, aber in einer anderen Darstellung. Sollte Matlab einen zu langen Ausdruck ausgeben, kann der Befehl simplify(ans) verwendet werden, um den Ausdruck zu vereinfachen.
+...
+\subsection{Parametrische Darstellung} %NICHT SICHER
+%Die Parametrische Darstellung der Gewichtsfunktion erhält man, indem man die Laplace-Rücktransformierte der Übertragungsfunktion bildet. Das macht man wie folgt: 
+%syms s -> G(s)=bspw. 3*s/(1+9*s + 20*s^2) -> ilaplace(G(s)) -> t=[0;0.1;10] -> plot(t, Antwort der parametrischen Darstellung) (Da t ein Vektor ist, muss man beim Multiplizieren das Punktprodukt (Hadamad-Produkt) .* verwenden) (Alternativ kann man das mit dem fplot befehl machen, da spart man sich das Hadamad-Produkt) -> xlabel (Mit den Befehlen xlabel und ylabel kann man die Achsen beschriften) -> ylabel Gewichtsfunktion
+%texttt{sys=tf([..][..])}
+%texttt{syms s \\ ...}
+...
+\subsection{Nichtparametrische Darstellung}
+\subsubsection{Plot mit Matlab}
+% Durch den Befehl \texttt{impulse(sys)} öffnet MATLAB ein neues Fenster mit der passenden Sprungantwort h(s) zu G(s) und stellt diese folgendermaßen dar.
+
+%Um die Gewichtsfunktion g(t) zu bestimmen, gebe ich den Befehl\\
+%\texttt{ilaplace(G(s))}
+%ein.
+%Möchte ich mein Ergebnis g(t) weiterverwenden, dann definiere ich mir die symbolische Funktion\\
+%\texttt{syms g(t)=ilaplace(G(s))}
+...
+\subsubsection{Plot mit Step-Funktion}
+...
+\subsubsection{Plot mit Simulink}
+...
+
+\section{Frequenzgang}
+Den Frequenzgang erhält man indem man die komplexe Variable $s$ durch iOmega ($i\omega$) ersetzt. Das ist gleichbedeutend mit einem Schnitt der komplexen Funktion $G(s)$ entlang der imaginären Achse. Damit wird jeder Kreisfrequenz Omega eine komplexe Zahl $G(i\omega)$ zugeordnet. Bedingt durch den Schnitt hat der Frequenzgang eine geringere Aussagekraft als die Übertragungsfunktion. Die Bedeutung des Frequenzgangs ergibt sich aus der Tatsache, dass das stationäre Verhalten des Systems auf eine sinuidale Anregung beschrieben wird.
+Sei $u(t) = sin(\omega t)$, so ist $\dot{y}_{stat}(\dot{t})$ %TODO: KONTROLLE
+, dh. das Ausgangssignal nach Abklingen der Anfangswerte durch $\dot{y}_{stat}(t)=A*|G(i\omega )|sin(\omega t + \phi (G(i\omega )))$ gegeben. %TODO: KONTROLLE und Block
+Der Frequenzgang liefert formal weniger Aussagen als die Übertragungsfunktion, da er nicht alle $s$ betrachtet, sondern nur die $s$, die auf der imaginären Achse liegen.\\
+Experimentell könnte der Frequenzgang durch die folgende Simulink-Schaltung aufgenommen werden. 
+%TODO: Schaltung einfügen
+Man stellt eine Frequenz ein und schaut am Ausgang die Amplitudenverstärkung und die Phasenverschiebung an. Hat der Eingangssinus die Amplitude 1, kann ich die Verstärkung am Ausgang direkt ablesen. Den erhaltenen Punkt trägt man in das Bode-Diagramm ein. Danach wiederholt man das Experiment mit einer anderen Frequenz. Hat man genügend Punkte, so verbindet man diese und erhält das Bode-Diagramm. Ebenso wie wir an den Verläufen der Sprungantwort auf die Differentialgleichung schließen konnten, können Experten aus den Verläufen des Bode-Diagramms auf den Frequenzgang (und damit auf die Übertragungsfunktion und damit auf die Differentialgleichung) schließen.\\
+Die Phasenverschiebung kann selbstverständlich auch mit Computeralgebra ausgerechnet werden.
+\subsection{Parametrische Darstellung}
+...
+\subsection{Nichtparametrische Darstellung}
+\subsubsection{Nyquist-Plot (Ortskurve)}
+%Realteil von G(iw)
+...
+\subsubsection{Bode-Plot}
+...
+
+\section{Pol-Nullstellen-Plot}
+Der Pole-Zero-Plot stellt die Pole und Nullstellen der Übertragungsfunktion in der komplexen Ebene dar. Pole werden durch ein Kreuz dargestellt, Nullstellen durch einen Kreis. Ein Doppelpol wird durch ein Doppelkreuz und eine Nullstelle durch einen Doppelkreis dargestellt. Der PZP enthält keine Informationen mehr über die statische Verstärkung. Aus dem PZP lassen sich Eigenschaften wie Stabilität und Minimalphasigkeit ablesen. So ist ein System stabil, wenn alle Pole in der linken offenen Halbebene liegen. Es ist instabil, sobald ein Pol auf der rechten Halbebene liegt. Es ist grenzstabil, wenn keine Pole in der rechten Halbebene liegen aber einige auf der imaginären Achse liegen. Ein System ist minimalphasig, wenn alle Nullstellen in der offenen linken Halbebene liegen. Es ist nicht minimalphasig, sobald eine Nullstelle auf der rechten Halbebene liegt. Und letztlich ist es schwachminimalphasig, wenn keine Nullstelle auf der rechten Halbebene liegt, aber Nullstellen auf der imaginären Achse auftauchen.
+
+\section{Statische Kennlinie}%TODO: HBOX
+In der statischen Kennlinie wird der Ausgang über dem Eingang dargestellt. Bei einem linearen System (unten $u$ oben $y$) ist die statische Kennlinie eine Ursprungsgerade, deren Anstieg der statischen Verstärkung entspricht. Die statische Verstärkung $K$ kann aus $G(0)=K$ berechnet werden. Sie ist bei Systemen mit D-Verhalten 0 und bei Systemen mit I-Verhalten unendlich. Mit anderen Worten, Systeme mit I-Verhalten haben keine Kennlinie. In der statischen Kennlinie ist keinerlei Dynamik zu erkennen. Die Information über Pole, Nullstellen, etc. fehlt. Sie ist somit die schwächste der Modellbeschreibungen. Gleichwohl ist sie einfach zu bestimmen. Man stellt einen konstanten Wert $u$ ein, wartet bis die Eigenvorgänge abgeklungen 
+%(bis es eingeschwungen ist) 
+sind und liest den $y$-Wert ab. Diesen Punkt trägt man in das Diagramm ein und wiederholt das ganze für mehrere Punkte. In der Praxis werden sich häufig nicht ideale Geraden ergeben. Bei Öfen verringert sich der Anstieg beispielsweise bei hohem $u$. Der Praktiker ließt aus der statischen Kennlinie ab, wie gut seine Annahme eines linearen Modells ist. Sie ist gut in einem Bereich, in dem eine Geradenapproximation akzektabel ist (wenn sie einer Gerade ähnelt). Bei einem Mehrgrößensystem mit zwei Eingängen und zwei Ausgängen wählt man häufig die folgende Darstellung: Entweder zwei Einzeldiagramme, oder ein Verbunddiagramm (zwei Eingänge ein Ausgang: Üblicherweise keine 3D-Darstellung, sondern Transistorkennlinien). Bei Systemen mit zwei Eingängen 
+%wird häufig eine Eingangsvariable durch Kennlinienscharen diskretisiert/
+wählt man häufig die Darstellung mit Kennlinienscharen, wobei beispielsweise $u_{1}$ die reellen Zahlen darstellt und $u_{2}$ den Scharparameter darstellt.
+%Indem man alle Ableitungen gleich Null setzt und eine Beziehung zwischen den y und u herstellt. Gegebenenfalls muss x eliminiert werden (lineares Gleichungssystem).
+
+
+\end{document}
+
+
+
+%Vorteil Übertragungsfkt/Laplace-Transformation: Komplizierte Operationen in der Analysis wie Faltung äußern sich im Laplace-Bereich durch einfache Multiplikation. Sofern man in der Klasse der linearen Zeitinvarianten Systeme (LTI) ist, sind die Laplace-Transformierten rationale Funktionen (Polynom/Polynom) -> Damit gehen Polynomdivision, Patialbruchzerlegung usw.
+
+%TODO: Linearisierung:
+%Nachdem man die Ruhelagen berechnet hat kann man um jede einzelne Ruhelage das System linearisieren. In der Folge entsteht ein lineares System, welches für kleine Abweichungen um die Ruhelage Gültigkeit hat. Man nennt dieses auch die Variationsgleichung oder einfach auch linearisiertes System. Das linearisierte System ist deutlich einfacher zu behandeln, da sich z.B. über Eigenwerte Aussagen zur Stabilität der Ruhelage treffen lassen. Vorgehen:
+%Im Falle eines SiSo-Systems ist f(x) die Jacobi-Matrix an der Ruhelage und f_u der Eingangsvektor.
