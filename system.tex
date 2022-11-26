@@ -148,6 +148,55 @@ Die höchste Ableitung wird vom Koeffizienten freigestellt, in dem alle Terme de
   \dot y(t)= \frac{1}{a_1}(-a_0y(t) +b_0u(t))
 \end{equation*}
 %Strukturbild dargestllte Blockschaltbild
+
+%TODO: FORMEL
+%y'''+3y'y^2+2y =u
+%Umgeschrieben y'''=-3y'y^2-2y+u
+%x_1= y
+%x_2= y'
+%x_3 = y''
+
+%x_1' = x_2
+%x_2' = x_3
+%x_3' = -3x_2x_1^2-2x_1+u
+
+%y=x_1
+%x_1(0) = y(0)
+%x_2(0) = y'(0)
+%x_3(0) = y''(0)
+
+%\begin{equation*}
+%     \dddot y + 3 \dot y*y^2+y = u  \\
+%   \end{equation*}
+
+%   \begin{equation*}
+%     \dddot y = -3 \dot y*y^2-2y+u \\
+%   \end{equation*}
+
+%   \begin{equation*}
+%     x_1 = y
+%   \end{equation*}
+
+%   \begin{equation*}
+%     x_2 = \dot y
+%   \end{equation*}
+
+%   \begin{equation*}
+%     x_3 = \ddot y
+%   \end{equation*}
+% \begin{equation*}
+%   \dot x_1 = x_2
+% \end{equation*}
+
+% \begin{equation*}
+%   \dot x_2 = x_3
+% \end{equation*}
+
+% \begin{equation*}
+%   \dot x_3 = -3x_2*x_1^2-2x_1+u 
+% \end{equation*}
+
+\section{Ein-/Ausgangsdifferentialgleichung}
 Eine Differenzialgleichung n-ter Ordnung benötigt zur Lösung n Integrationen. 
 Nach dem Blockschaltbild zur Lösung der Differenzialgleichung 1. Ordnung ergibt sich eine Zustandsvariable als Ausgang der Integratore. 
 Durch Substitution wird die Ableitung von $y(t)$ durch die Bezeichnung der Zustandsvariable $x(t)$ wie folgt eingesetzt: 
@@ -203,55 +252,6 @@ Diese Gleichungen werden als Vektordifferenzialgleichungen in Matizenform wie fo
     x_2
   \end{bmatrix}
 \end{equation*}
-%TODO: FORMEL
-%y'''+3y'y^2+2y =u
-%Umgeschrieben y'''=-3y'y^2-2y+u
-%x_1= y
-%x_2= y'
-%x_3 = y''
-
-%x_1' = x_2
-%x_2' = x_3
-%x_3' = -3x_2x_1^2-2x_1+u
-
-%y=x_1
-%x_1(0) = y(0)
-%x_2(0) = y'(0)
-%x_3(0) = y''(0)
-
-%\begin{equation*}
-%     \dddot y + 3 \dot y*y^2+y = u  \\
-%   \end{equation*}
-
-%   \begin{equation*}
-%     \dddot y = -3 \dot y*y^2-2y+u \\
-%   \end{equation*}
-
-%   \begin{equation*}
-%     x_1 = y
-%   \end{equation*}
-
-%   \begin{equation*}
-%     x_2 = \dot y
-%   \end{equation*}
-
-%   \begin{equation*}
-%     x_3 = \ddot y
-%   \end{equation*}
-% \begin{equation*}
-%   \dot x_1 = x_2
-% \end{equation*}
-
-% \begin{equation*}
-%   \dot x_2 = x_3
-% \end{equation*}
-
-% \begin{equation*}
-%   \dot x_3 = -3x_2*x_1^2-2x_1+u 
-% \end{equation*}
-
-\section{Ein-/Ausgangsdifferentialgleichung}
-...
 
 \section{Zusammenhänge der Funktionen $G(s)$, $g(t)$, $h(t)$ und $\frac{G(s)}{s}$}
 %TODO: Diagramm
