@@ -117,6 +117,92 @@ Die erzwungene Bewegung kann man aber nur dann explizit angeben, wenn man für u
 \section{Zustandsraumbeschreibung (implizite Systembeschreibung)}
 Mein System in neuer Zustandsraumdarstellung nach Transformation
 -> Zusandsraumdarstellung
+%Gewöhnliche Differenzialgleichungen eines Übertragungssystems
+
+%Beschreibung linearer Systeme im komplexen Frequenzbereich
+
+%Numerische Beschreibung linearer und nichtlinearer Systeme
+
+Standard-Übertragungsfunktion eines 
+Verzögerungsglied mit proportionalen Übertragungsverhalten.
+
+\begin{equation*}
+  G(s) = \frac{Y(s)}{G(s)} = \frac{K__\text{PT1}}{T_1+1}
+\end{equation*}
+Die zugehörige linare Differentialgleichung wird durch Umwandlung mit Hilfe der inversen Laplace-Transformation ermittelt:
+\begin{equation*}
+  T_1\frac{\mathrm d}{\mathrm dt}y(t)+y(t)=K__\text{PT1}u(t)
+\end{equation*}
+mit $T_1$ als System-Zeitkonstante und dem Verstärkungsfaktor $K_\text{PT1}$.
+
+Zur Vereinheitlichung der Ableitungen $y(t)$ werden die Koeffizienten mit dem Buchstaben a dargestellt.
+Für die rechte Seite der Ableitungen von $u(t)$ mit b und fortlaufend nummeriert:
+
+\begin{equation*}
+  a_1\dot y(t)+a_0y(t) = b_0u(t)
+\end{equation*}
+
+Die höchste Ableitung wird vom Koeffizienten freigestellt, in dem alle Terme der Gleichung auch durch $a_1$ dividiert werden und nach $\dot y(t)$ aufgelöst wird:
+
+\begin{equation*}
+  \dot y(t)= \frac{1}{a_1}(-a_0y(t) +b_0u(t))
+\end{equation*}
+%Strukturbild dargestllte Blockschaltbild
+Eine Differenzialgleichung n-ter Ordnung benötigt zur Lösung n Integrationen. 
+Nach dem Blockschaltbild zur Lösung der Differenzialgleichung 1. Ordnung ergibt sich eine Zustandsvariable als Ausgang der Integratore. 
+Durch Substitution wird die Ableitung von $y(t)$ durch die Bezeichnung der Zustandsvariable $x(t)$ wie folgt eingesetzt: 
+\begin{equation*}
+  x_1(t) = y(t); x_2(t) = u(t)
+\end{equation*}
+
+Damit lautet die Differentialgleichung mit der eingeführten neuen Bezeichnungder Zustandsvariable:
+
+\begin{equation*}
+  \dot y(t)= \frac{1}{a_1}(-a_0x_1(t) +b_0u(t))
+\end{equation*}
+
+Daraus können die Zustandsgrößen gebildet werden.
+
+\begin{equation*}
+  \dot x_1= -\frac{a_0}{a_1}x_1+\frac{b_0}{a_1}x_2
+\end{equation*}
+
+\begin{equation*}
+  \dot x_2= -\frac{a_0}{a_1}x_2+\frac{b_0}{a_1}u
+\end{equation*}
+
+Die Zustandsgrößen $x_1$ und $x_1$ bilden den sogenannten Zustandsvektor $\vec x$.
+
+Diese Gleichungen werden als Vektordifferenzialgleichungen in Matizenform wie folgt geschrieben:
+\begin{equation*}
+  \begin{bmatrix}
+    \dot x_1\\
+    \dot x_2
+  \end{bmatrix}
+  \left =
+  \begin{bmatrix}
+    -\frac{a_0}{a_1} & \frac{b_0}{a_1} \\
+    0                & -\frac{a_0}{a_1}
+  \end{bmatrix}
+  \left +
+  \begin{bmatrix}
+    0               \\
+    \frac{b_0}{a_1}
+  \end{bmatrix}
+  \left *u
+\end{equation*}
+ und die Ausgangsgleichung:
+\begin{equation*}
+  \vec y(t) =
+  \begin{bmatrix}
+    1     & 0
+  \end{bmatrix}
+  \left *
+  \begin{bmatrix}
+    x_1     \\
+    x_2
+  \end{bmatrix}
+\end{equation*}
 %TODO: FORMEL
 %y'''+3y'y^2+2y =u
 %Umgeschrieben y'''=-3y'y^2-2y+u
