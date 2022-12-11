@@ -126,13 +126,13 @@ Mein System in neuer Zustandsraumdarstellung nach Transformation
 Standard-Übertragungsfunktion eines 
 Verzögerungsglied mit proportionalen Übertragungsverhalten.
 
-\begin{equation*}
+\begin{align*}
   G(s) = \frac{Y(s)}{G(s)} = \frac{K__\text{PT1}}{T_1+1}
-\end{equation*}
+\end{align*}
 Die zugehörige linare Differentialgleichung wird durch Umwandlung mit Hilfe der inversen Laplace-Transformation ermittelt:
-\begin{equation*}
+\begin{align*}
   T_1\frac{\mathrm d}{\mathrm dt}y(t)+y(t)=K__\text{PT1}u(t)
-\end{equation*}
+\end{align*}
 mit $T_1$ als System-Zeitkonstante und dem Verstärkungsfaktor $K_\text{PT1}$.
 
 Zur Vereinheitlichung der Ableitungen $y(t)$ werden die Koeffizienten mit dem Buchstaben a dargestellt.
@@ -148,53 +148,47 @@ Die höchste Ableitung wird vom Koeffizienten freigestellt, in dem alle Terme de
   \dot y(t)= \frac{1}{a_1}(-a_0y(t) +b_0u(t))
 \end{equation*}
 %Strukturbild dargestllte Blockschaltbild
+\subsection{Zustandsraumbeschreibung in Übertragungsfunktion}
+Natürlich kann die Umformung von der Zustandsraumbeschreibung in die Übertragungsfunktion auch mathematisch durchgeführt werden:
+Gleichung 1:
+\begin{equation}
+	\dot{Z(t)}=A*z(t)+B*y_{e}(t)
+\end{equation}
+wird transformiert in:
+\begin{equation}
+	s*Z(s)=A*Z(s)+B*Y_{e}(s)
+\end{equation}
+Gleichung 2:
+\begin{equation}
+	y_{a}(t)=C*z(t)+D*y_{e}(t)
+\end{equation}
+wird transformiert in:
+\begin{equation}
+	Y_{a}(s)=C*z(s)+D*Y_{e}(s)
+\end{equation}
+bei Gleichung 1 wird  das $z(s)$ isoliert:
+\begin{equation}
+	s*Z(s)=A*Z(s)+B*Y_{e}(s)
+\end{equation}
+\begin{equation}
+	Z(s)*(sI-A)=B*Y_{e}(s)
+\end{equation}
+wobei I die Einheitsmatrix ist.
+\begin{equation}
+	Z(s)=(sI-a)^{-1}Y_{e}(s)
+\end{equation}
+Im nächsten Schritt wird das $z(s)$ der Gleichung 1 in das $z(s)$ der Gleichung 2 eingesetzt:
+\begin{equation}
+	Y_{a}(s)=C*(sI-a)^{-1}Y_{e}(s)+D*Y_{e}(s)
+\end{equation}
+Umgeformt ergibt es die Formel:
+\begin{equation}
+	G(s)=\frac{Y_{a}(s)}{Y_{e}(s)}=C*(sI-A)^{-1}*B+D
+\end{equation}
+Falls man die Differentialgleichung erhalten möchten muss man die gewonnene Übertragungsfunktion in die Differentialgleichung umwandeln.
+\subsection{Übertragungsfunktion in Zustandsraumbeschreibung}
+Beschreibung folgt noch.
 
-%TODO: FORMEL
-%y'''+3y'y^2+2y =u
-%Umgeschrieben y'''=-3y'y^2-2y+u
-%x_1= y
-%x_2= y'
-%x_3 = y''
-
-%x_1' = x_2
-%x_2' = x_3
-%x_3' = -3x_2x_1^2-2x_1+u
-
-%y=x_1
-%x_1(0) = y(0)
-%x_2(0) = y'(0)
-%x_3(0) = y''(0)
-
-%\begin{equation*}
-%     \dddot y + 3 \dot y*y^2+y = u  \\
-%   \end{equation*}
-
-%   \begin{equation*}
-%     \dddot y = -3 \dot y*y^2-2y+u \\
-%   \end{equation*}
-
-%   \begin{equation*}
-%     x_1 = y
-%   \end{equation*}
-
-%   \begin{equation*}
-%     x_2 = \dot y
-%   \end{equation*}
-
-%   \begin{equation*}
-%     x_3 = \ddot y
-%   \end{equation*}
-% \begin{equation*}
-%   \dot x_1 = x_2
-% \end{equation*}
-
-% \begin{equation*}
-%   \dot x_2 = x_3
-% \end{equation*}
-
-% \begin{equation*}
-%   \dot x_3 = -3x_2*x_1^2-2x_1+u 
-% \end{equation*}
 
 \section{Ein-/Ausgangsdifferentialgleichung}
 Eine Differenzialgleichung n-ter Ordnung benötigt zur Lösung n Integrationen. 
@@ -223,7 +217,7 @@ Daraus können die Zustandsgrößen gebildet werden.
 Die Zustandsgrößen $x_1$ und $x_1$ bilden den sogenannten Zustandsvektor $\vec x$.
 
 Diese Gleichungen werden als Vektordifferenzialgleichungen in Matizenform wie folgt geschrieben:
-\begin{equation*}
+\begin{align*}
   \begin{bmatrix}
     \dot x_1\\
     \dot x_2
@@ -239,9 +233,9 @@ Diese Gleichungen werden als Vektordifferenzialgleichungen in Matizenform wie fo
     \frac{b_0}{a_1}
   \end{bmatrix}
   \left *u
-\end{equation*}
+\end{align*}
  und die Ausgangsgleichung:
-\begin{equation*}
+\begin{align*}
   \vec y(t) =
   \begin{bmatrix}
     1     & 0
@@ -251,7 +245,7 @@ Diese Gleichungen werden als Vektordifferenzialgleichungen in Matizenform wie fo
     x_1     \\
     x_2
   \end{bmatrix}
-\end{equation*}
+\end{align*}
 
 \section{Zusammenhänge der Funktionen $G(s)$, $g(t)$, $h(t)$ und $\frac{G(s)}{s}$}
 %TODO: Diagramm
