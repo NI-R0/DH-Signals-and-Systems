@@ -1,0 +1,36 @@
+\section{Ein-/Ausgangsdifferentialgleichung}
+\subsection*{Allgemein}
+\begin{equation*}
+  G(s) = \frac{Y(s)}{U(s)} = \frac{K_\text{PT1}}{T_1+1}
+\end{equation*}
+Die zugehörige linare Differentialgleichung wird durch Umwandlung mit Hilfe der inversen Laplace-Transformation ermittelt:
+\begin{equation*}
+  T_1\frac{\mathrm d}{\mathrm dt}y(t)+y(t)=K_\text{PT1}u(t)
+\end{equation*}
+mit $T_1$ als System-Zeitkonstante und dem Verstärkungsfaktor $K_\text{PT1}$.
+
+Zur Vereinheitlichung der Ableitungen $y(t)$ werden die Koeffizienten mit dem Buchstaben a dargestellt.
+Für die rechte Seite der Ableitungen von $u(t)$ mit b und fortlaufend nummeriert:
+
+\begin{equation*}
+  a_1\dot y(t)+a_0y(t) = b_0u(t)
+\end{equation*}
+
+Die höchste Ableitung wird vom Koeffizienten freigestellt, in dem alle Terme der Gleichung auch durch $a_1$ dividiert werden und nach $\dot y(t)$ aufgelöst wird:
+
+\begin{equation*}
+  \dot y(t)= \frac{1}{a_1}(-a_0y(t) +b_0u(t))
+\end{equation*}
+
+\section*{Unser System}
+\begin{equation*}
+  G(s)=\frac{-25}{10s+1}
+\end{equation*}
+Die zugehörige linare Differentialgleichung wird durch Umwandlung mit Hilfe der inversen Laplace-Transformation ermittelt:
+\begin{equation*}
+  10\dot y(t)+y(t)= -25u(t)
+\end{equation*}
+Nach $\dot y(t)$ umformen:
+\begin{equation*}
+  \dot y(t)= \frac{1}{10}(-y(t)-25u(t))
+\end{equation*}
