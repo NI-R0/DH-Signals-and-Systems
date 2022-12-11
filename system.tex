@@ -23,6 +23,7 @@
       {\Huge \textbf{Signale und Systeme - Systemanalyse}}\\[1.5cm]
       {\Large Analyse des Systems}\\[1cm]
       {\Huge PT$_{1}$ mit negativer Verstärkung}\\[7cm]
+      {\large Matrikelnummer: \textbf{8809469}}\\[0.5cm]
       {\large Matrikelnummer: \textbf{6130555}}\\[0.5cm]
       {\large Kurs: TINF21B3}\\[0.5cm]
       {\large Abgabedatum 16.12.2022}
@@ -125,14 +126,92 @@ Mein System in neuer Zustandsraumdarstellung nach Transformation
 
 Standard-Übertragungsfunktion eines 
 Verzögerungsglied mit proportionalen Übertragungsverhalten.
+\subsection*{Allgemein}
 
+\begin{equation*}
+  \ddot y(t)= \frac{1}{a_2}(-a_0\dot y(t)-a_1 y(t) +b_0u(t))
+\end{equation*}
+
+Eine Differenzialgleichung n-ter Ordnung benötigt zur Lösung n Integrationen. 
+Nach dem Blockschaltbild zur Lösung der Differenzialgleichung 1. Ordnung ergibt sich eine Zustandsvariable als Ausgang der Integratore. 
+Durch Substitution wird die Ableitung von $y(t)$ durch die Bezeichnung der Zustandsvariable $x(t)$ wie folgt eingesetzt: 
+\begin{equation*}
+  x_1(t) = y(t); x_2(t) = \dot y(t)
+\end{equation*}
+
+Damit lautet die Differentialgleichung mit der eingeführten neuen Bezeichnungder Zustandsvariable:
+
+\begin{equation*}
+  \ddot y(t)= \frac{1}{a_2}(-a_0 x_1(t)-a_1 x_2(t) +b_0u(t))
+\end{equation*}
+
+Daraus können die Zustandsgrößen gebildet werden.
+
+\begin{equation*}
+  \dot x_1 = \dot y = x_2
+\end{equation*}
+
+\begin{equation*}
+  \dot x_2= \ddot y = -\frac{a_0}{a_2}x_1--\frac{a_1}{a_2}x_1+\frac{b_0}{a_2}u
+\end{equation*}
+
+Die Zustandsgrößen $x_1$ und $x_1$ bilden den sogenannten Zustandsvektor $\vec x$.
+
+Diese Gleichungen werden als Vektordifferenzialgleichungen in Matizenform wie folgt geschrieben:
 \begin{align*}
-  G(s) = \frac{Y(s)}{G(s)} = \frac{K__\text{PT1}}{T_1+1}
+  \begin{bmatrix}
+    \dot x_1\\
+    \dot x_2
+  \end{bmatrix}
+  \left =
+  \begin{bmatrix}
+     0                  & 1             \\
+     -\frac{a_0}{a_2}   & -\frac{a_1}{a_2}
+  \end{bmatrix}
+  \left *
+  \begin{bmatrix}
+    x_1  \\
+    x_2
+  \end{bmatrix}
+  \left +
+  \begin{bmatrix}
+    0               \\
+    \frac{b_0}{a_2}
+  \end{bmatrix}
+  \left *u(1)
 \end{align*}
+ und die Ausgangsgleichung:
+\begin{align*}
+  \vec y(t) =
+  \begin{bmatrix}
+    1     & 0
+  \end{bmatrix}
+  \left *
+  \begin{bmatrix}
+    x_1     \\
+    x_2
+  \end{bmatrix}
+\end{align*}
+
+\subsection*{Unser System}
+
+\begin{equation*}
+  \ddot y(t)= \frac{1}{a_2}(-a_0\dot y(t)-a_1 y(t) +b_0u(t))
+\end{equation*}
+
+
+
+%Strukturbild dargestllte Blockschaltbild
+
+\section{Ein-/Ausgangsdifferentialgleichung}
+\subsection*{Allgemein}
+\begin{equation*}
+  G(s) = \frac{Y(s)}{U(s)} = \frac{K_\text{PT1}}{T_1+1}
+\end{equation*}
 Die zugehörige linare Differentialgleichung wird durch Umwandlung mit Hilfe der inversen Laplace-Transformation ermittelt:
-\begin{align*}
-  T_1\frac{\mathrm d}{\mathrm dt}y(t)+y(t)=K__\text{PT1}u(t)
-\end{align*}
+\begin{equation*}
+  T_1\frac{\mathrm d}{\mathrm dt}y(t)+y(t)=K_\text{PT1}u(t)
+\end{equation*}
 mit $T_1$ als System-Zeitkonstante und dem Verstärkungsfaktor $K_\text{PT1}$.
 
 Zur Vereinheitlichung der Ableitungen $y(t)$ werden die Koeffizienten mit dem Buchstaben a dargestellt.
@@ -147,105 +226,59 @@ Die höchste Ableitung wird vom Koeffizienten freigestellt, in dem alle Terme de
 \begin{equation*}
   \dot y(t)= \frac{1}{a_1}(-a_0y(t) +b_0u(t))
 \end{equation*}
-%Strukturbild dargestllte Blockschaltbild
+
+\section*{Unser System}
+\begin{equation*}
+  G(s)=\frac{-25}{10s+1}
+\end{equation*}
+Die zugehörige linare Differentialgleichung wird durch Umwandlung mit Hilfe der inversen Laplace-Transformation ermittelt:
+\begin{equation*}
+  10\dot y(t)+y(t)= -25u(t)
+\end{equation*}
+Nach $\dot y(t)$ umformen:
+\begin{equation*}
+  \dot y(t)= \frac{1}{10}(-y(t)-25u(t))
+\end{equation*}
+
 \subsection{Zustandsraumbeschreibung in Übertragungsfunktion}
 Natürlich kann die Umformung von der Zustandsraumbeschreibung in die Übertragungsfunktion auch mathematisch durchgeführt werden:
 Gleichung 1:
 \begin{equation}
-	\dot{Z(t)}=A*z(t)+B*y_{e}(t)
+	\dot{X}(t)=A*z(t)+B*u(t)
 \end{equation}
 wird transformiert in:
 \begin{equation}
-	s*Z(s)=A*Z(s)+B*Y_{e}(s)
+	s*X(s)=A*X(s)+B*U(s)
 \end{equation}
 Gleichung 2:
 \begin{equation}
-	y_{a}(t)=C*z(t)+D*y_{e}(t)
+	y_{a}(t)=C*x(t)+D*u(t)
 \end{equation}
 wird transformiert in:
 \begin{equation}
-	Y_{a}(s)=C*z(s)+D*Y_{e}(s)
+	Y_{a}(s)=C*x(s)+D*U(s)
 \end{equation}
-bei Gleichung 1 wird  das $z(s)$ isoliert:
+bei Gleichung 1 wird  das $x(s)$ isoliert:
 \begin{equation}
-	s*Z(s)=A*Z(s)+B*Y_{e}(s)
+	s*X(s)=A*X(s)+B*U(s)
 \end{equation}
 \begin{equation}
-	Z(s)*(sI-A)=B*Y_{e}(s)
+	X(s)*(sE-A)=B*U(s)
 \end{equation}
-wobei I die Einheitsmatrix ist.
+wobei $E$ die Einheitsmatrix ist.
 \begin{equation}
-	Z(s)=(sI-a)^{-1}Y_{e}(s)
+	X(s)=(sE-a)^{-1}U(s)
 \end{equation}
-Im nächsten Schritt wird das $z(s)$ der Gleichung 1 in das $z(s)$ der Gleichung 2 eingesetzt:
+Im nächsten Schritt wird das $x(s)$ der Gleichung 1 in das $x(s)$ der Gleichung 2 eingesetzt:
 \begin{equation}
-	Y_{a}(s)=C*(sI-a)^{-1}Y_{e}(s)+D*Y_{e}(s)
+	Y_{a}(s)=C*(sE-a)^{-1}U(s)+D*U(s)
 \end{equation}
 Umgeformt ergibt es die Formel:
 \begin{equation}
-	G(s)=\frac{Y_{a}(s)}{Y_{e}(s)}=C*(sI-A)^{-1}*B+D
+	G(s)=\frac{Y_{a}(s)}{U(s)}=C*(sE-A)^{-1}*B+D
 \end{equation}
 Falls man die Differentialgleichung erhalten möchten muss man die gewonnene Übertragungsfunktion in die Differentialgleichung umwandeln.
-\subsection{Übertragungsfunktion in Zustandsraumbeschreibung}
-Beschreibung folgt noch.
 
-
-\section{Ein-/Ausgangsdifferentialgleichung}
-Eine Differenzialgleichung n-ter Ordnung benötigt zur Lösung n Integrationen. 
-Nach dem Blockschaltbild zur Lösung der Differenzialgleichung 1. Ordnung ergibt sich eine Zustandsvariable als Ausgang der Integratore. 
-Durch Substitution wird die Ableitung von $y(t)$ durch die Bezeichnung der Zustandsvariable $x(t)$ wie folgt eingesetzt: 
-\begin{equation*}
-  x_1(t) = y(t); x_2(t) = u(t)
-\end{equation*}
-
-Damit lautet die Differentialgleichung mit der eingeführten neuen Bezeichnungder Zustandsvariable:
-
-\begin{equation*}
-  \dot y(t)= \frac{1}{a_1}(-a_0x_1(t) +b_0u(t))
-\end{equation*}
-
-Daraus können die Zustandsgrößen gebildet werden.
-
-\begin{equation*}
-  \dot x_1= -\frac{a_0}{a_1}x_1+\frac{b_0}{a_1}x_2
-\end{equation*}
-
-\begin{equation*}
-  \dot x_2= -\frac{a_0}{a_1}x_2+\frac{b_0}{a_1}u
-\end{equation*}
-
-Die Zustandsgrößen $x_1$ und $x_1$ bilden den sogenannten Zustandsvektor $\vec x$.
-
-Diese Gleichungen werden als Vektordifferenzialgleichungen in Matizenform wie folgt geschrieben:
-\begin{align*}
-  \begin{bmatrix}
-    \dot x_1\\
-    \dot x_2
-  \end{bmatrix}
-  \left =
-  \begin{bmatrix}
-    -\frac{a_0}{a_1} & \frac{b_0}{a_1} \\
-    0                & -\frac{a_0}{a_1}
-  \end{bmatrix}
-  \left +
-  \begin{bmatrix}
-    0               \\
-    \frac{b_0}{a_1}
-  \end{bmatrix}
-  \left *u
-\end{align*}
- und die Ausgangsgleichung:
-\begin{align*}
-  \vec y(t) =
-  \begin{bmatrix}
-    1     & 0
-  \end{bmatrix}
-  \left *
-  \begin{bmatrix}
-    x_1     \\
-    x_2
-  \end{bmatrix}
-\end{align*}
 
 \section{Zusammenhänge der Funktionen $G(s)$, $g(t)$, $h(t)$ und $\frac{G(s)}{s}$}
 %TODO: Diagramm
