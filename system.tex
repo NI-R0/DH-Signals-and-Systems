@@ -34,95 +34,13 @@
 \tableofcontents
 \newpage
 
-\section{Einleitung}
-Das System, welches im Folgenden behandelt wird hat die Übertragungsfunktion
-\begin{equation*}
-  G(s)=\frac{K}{T*s+1}
-\end{equation*}\\
-und mit den Werten $K=-25$ und $T=10$ ergibt sich daraus die neue Übertragungsfunktion
-\begin{equation*}
-  G(s)=\frac{-25}{10s+1} .
-\end{equation*}\\
-Um das System analysieren zu können, haben wir das System mit den entsprechenden Werten in Simulink simuliert und die Sprungantwort betrachet.\\
-Erst danach haben wir mit Matlab gearbeitet und dort die entsprechenden Graphen plotten lassen. Mit Hilfe des Befehls \texttt{sys = tf([-25],[10 1])} haben wir unser System in Matlab erzeugt. Falls notwendig wird ein Sinus als Eingangssignal angenommen. %TODO: Stimmt das?
-% Das System ist wie folgt zu klassifizieren:
-%TODO: Klassifizierung
 
+\input{Einleitung.tex}
 \input{VorgeheninderSystemthoerie.tex}
-
-\section{Physikalische Beschreibung/Umcodierung}
-%CHRIS:
-  % Welches technisches System passt zu meiner Systemklasse?
-  % Unser System hat D-Verhalten. D-Verhalten zeigen z.B. Tachometer.
-  % Schwingung??
-  % Wie entsteht ein DTs Glied? Schaltung von...?
-
-  %ICH:
-  % PT$_{1}$ mit negativer Verstärkung
-  % Systembeschreibung mit physikalischer Darstellung
-  % Systembeschreibung in systemtheoretischer Darstellung
-
-  % Mein System hat P-Verhalten. P deutet darauf hin 
-  % P zeigt Raumtemperatur.
-\textbf{Darstellung}
-%Beispiel Badewanne
-  %Eingang: Durchfluss Wasserhahn & 1/3600 m3/s oder V/Vges in %
-  %Ausgang: Höhe des Wassers
-  %Zustand: Höhe des Wassers
-  %Parameter: Fläche & & & Ti
-
-  %TODO Tabelle
-  %CHRIS:
-  % \begin{tabular}{l|l|l|l}
-        %     \centering
-        %         0 & physikalische Darstellung & normierte Darstellung & systemtheoretische Darstellung  \\ \hline
-        %         Eingang & Durchfluss Wasserhahn & 0-100\% & u \hline
-        %         Ausgang & Höhe des Wassers & V/V_ges & y \hline
-        %         Zustand & Höhe des Wassers & cfaef & x_1, x_2 ... je nach Ordnung \hline
-        %         Parameter & Masse, Länge,Trägheitsmoment, Kapazität, Induktivität & T, $T_D$, D
-        % \end{tabular}
-
-  %ICH:
-  \begin{tabular}{l| |l|l|l}
-    & Physikalisch & Normiert & Systemtheoretisch \\\hline\hline
-    Eingang & x & x & $u$ \\
-    Ausgang & x & x & $y$ \\
-    Zustand & x & x & $x_{1}$, $x_{2}$ \\
-    Parameter & Masse, etc. & x & $T_{1}$ \\   %, Länge, Kapazität, Induktivität, Trägheitsmoment
-  \end{tabular}
-
-
-% \begin{table}[]
-%   \begin{tabular}{l | l | l | l}
-%   & physikalische Darstellung & normierte Darstellung & sytematische Darstellung \\\hline
-%   Eingang   & Durchfluss Wasserhahn     &     & u                        \\
-%   Ausgang   & Füll höhe Wasser          &     & y                        \\
-%   Zustand   & Höhe des Wassers          &     & x1,x2                    \\
-%   Parameter & Fläche        &                 & %, Masse, Länge, Kapazität, Induktivität           
-%   \end{tabular}
-%   \caption{}
-%   \label{tab:my-table}
-%   \end{table}
-
-%Ich habe mich für die Einheit/Zeitkonstanten ... entschieden.
-%Die Normierung und Festlegung der Einheiten ist wichtig, damit ich bei den Plots weiß, in welchen Zeitskalen ich arbeite. Wenn ich alles auf Si normiere ist die Zeitkonstante üblicherweise in Sekunden/Minuten/Stunden.Ich habe mich entschieden für die Zeitkonstanten in s oder min oder h.
-%Eine Normierung des Eingangs auf den Bereich 0 bis 100% ist häufig sinnvoll, da dann die statische Verstärkung angibt, auf welchem Endwert ich bei 100% (also max. Eingang) lande (bei P-Gliedern).
-
-%ACHSEN DER PLOTS RICHTIG BESCHRIFTEN, damit die Einheiten richtig abgelesen werden können!!!! Beschriften: [t]=s oder t in s oder t/s oder "Zeit in Sekunden"
-
-%Matlab Befehle: labelx/yaxis: entweder t/s oder t in s/sec./Sekunden oder Zeit in Sekunden
-
-\section{Explizite Darstellung des Übertragungsoperators} %TODO: Überarbeiten
-Die allgemeine explizite Form des Übertragungsoperators für ein lineares zeitinvariantes System ist (x(t) Formel Aufschrieb).
-Für unser konkretes System kann man das mit der symbolik-Toolbox in Matlab berechnen: syms t und expm liefert ....
-Die erzwungene Bewegung kann man aber nur dann explizit angeben, wenn man für u(tau) eine explizite Vorgabe hat. Das ist der Fall, wenn u(tau) beispielsweise ein Dirac-Impuls oder ... 
-oder ein Sinusimpuls ist. In einem solchen Fall kann man das Integral analytisch ausrechnen. In meiner Arbeit wählen wir die Step-Funktion. 
-Das heißt u(tau)=1 für tau>=0. Im konkreten erhalten wir die Formel, die ausgeplotet identisch ist, mit Darstellung in ...
-
+\input{Physikalische Beschreibung-Umcodierung.tex}
+\input{Explizite Darstellung des Übertragungsoperators.tex}
 \input{Zustandsraumbeschreibung.tex}
-
 \input{Ein-Ausgangsdifferentialgleichung.tex}
-
 \input{ZustandsraumbeschreibunginÜbertragungsfunktion.tex}
 
 \section{Zusammenhänge der Funktionen $G(s)$, $g(t)$, $h(t)$ und $\frac{G(s)}{s}$}
