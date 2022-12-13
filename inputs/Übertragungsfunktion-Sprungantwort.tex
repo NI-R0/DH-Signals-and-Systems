@@ -4,26 +4,45 @@ Sie berücksichtigt die Anfangswerte nicht. Sie geht aus der E/A-Differential\-g
 % Durch Überkreuzmultiplikation von $G(s)=\frac{Y(s)}{U(s)}=(...)$ gelangt man zu $(...)Y(s)=(...)U(s)$ und unter Beachtung von $s=\frac{d}{dt}$ zu $\ddot{y}+y=\dot{u}+u$ mit $y(0_{-})=y_{0}$, $y(0_{-})=\dot{y}_{0}$ und $u(0_{-})=u_{0}$. %TODO: ????
 \subsection{Parametrische Darstellung} %TODO
 %CHRIS:
-% Die Parametrische Darstellung erhält man, indem man die Laplace-Rücktransformierte der Übertragungsfunktion bildet.
-%Das macht man wie folgt:\\
-%Die Symbolic Toolbox macht die Ausführung symbolischer mathematischer Berechnungen möglich.\\
-%Mit dem Befehl\\
-%\texttt{syms s}\\
-%erstelle ich mir eine symbolische Variable s.\\
-%Mit\\
-%\texttt{G(s)=(1*s)/(4*s\^{}2+0.5*s+1)}\\
-% gebe ich die Übertragungsfunktion G(s) ein.
+Die Parametrische Darstellung erhält man, indem man die Laplace-Rücktransformierte der Übertragungsfunktion bildet.
+Das macht man wie folgt:\\
+Die Symbolic Toolbox macht die Ausführung symbolischer mathematischer Berechnungen möglich.\\
+Mit dem Befehl\\
+\texttt{syms s t}\\
+erstelle ich mir eine symbolische Variable s und t.\\
+Mit\\
+\texttt{G(s)=(-25)/(10*s+1)}\\
+gebe ich die Übertragungsfunktion G(s) ein.
 
-%Alternativ kann ich die Sprungantwort h(t) durch Integration der Übertragungsfunktion bestimmen, gebe ich den Befehl \\
-%\texttt{ilaplace(G(s)/s)}\\
-%ein.
+Alternativ kann ich die Sprungantwort h(t) durch Integration der Übertragungsfunktion bestimmen, gebe ich den Befehl \\
+\texttt{ilaplace(G(s)/s)}\\
+ein.
 
 %ICH:
 %ilaplace(G(s)/s), alternativ kann h(t) auch durch Integration von G(t) berechnet werden. h(t)=int(g(t))
 %Möchte ich mein Ergebnis g(t) weiter verwenden und nicht ans benutzen, dann definiere ich mir die symbolische Funktion syms g(t)
 
 %Alternativ kann die Übergangsfunktion aus der Gewichtsfunktion durch Integration erhalten werden.
-...
+
+Diese Sprungantwort wäre dann:
+\begin{equation*}
+    h(t)=25*e^{\frac{-t}{10}}-25
+\end{equation*}
+
+Hier graphisch dargestellt:
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=5cm]{image/Übergangsfunktion.eps}
+    \caption{Übergangsfunktion $h(t)$}
+\end{figure}
+
+\begin{figure}[!ht]
+	\centering
+ 	\includegraphics[width=10cm]{image/Übergangsfunktion}
+	\caption{Übergangsfunktion $h(t)$}
+\end{figure}
+
+
 \subsection{Nichtparametrische Darstellung}
 \subsubsection{Plot mit Matlab}
 %CHRIS:
