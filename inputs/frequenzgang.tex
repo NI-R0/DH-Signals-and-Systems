@@ -1,0 +1,16 @@
+Den Frequenzgang erhält man indem man die komplexe Variable $s$ durch iOmega ($i\omega$) ersetzt. Das ist gleichbedeutend mit einem Schnitt der komplexen Funktion $G(s)$ entlang der imaginären Achse. Damit wird jeder Kreisfrequenz Omega eine komplexe Zahl $G(i\omega)$ zugeordnet. Bedingt durch den Schnitt hat der Frequenzgang eine geringere Aussagekraft als die Übertragungsfunktion. Die Bedeutung des Frequenzgangs ergibt sich aus der Tatsache, dass das stationäre Verhalten des Systems auf eine sinuidale Anregung beschrieben wird.
+Sei $u(t) = sin(\omega t)$, so ist $\dot{y}_{stat}(\dot{t})$ %TODO: KONTROLLE
+, dh. das Ausgangssignal nach Abklingen der Anfangswerte durch $\dot{y}_{stat}(t)=A*|G(i\omega )|sin(\omega t + \phi (G(i\omega )))$ gegeben. %TODO: KONTROLLE und Block
+Der Frequenzgang liefert formal weniger Aussagen als die Übertragungsfunktion, da er nicht alle $s$ betrachtet, sondern nur die $s$, die auf der imaginären Achse liegen.\\
+Experimentell könnte der Frequenzgang durch die folgende Simulink-Schaltung aufgenommen werden. 
+%TODO: Schaltung einfügen
+Man stellt eine Frequenz ein und schaut am Ausgang die Amplitudenverstärkung und die Phasenverschiebung an. Hat der Eingangssinus die Amplitude 1, kann ich die Verstärkung am Ausgang direkt ablesen. Den erhaltenen Punkt trägt man in das Bode-Diagramm ein. Danach wiederholt man das Experiment mit einer anderen Frequenz. Hat man genügend Punkte, so verbindet man diese und erhält das Bode-Diagramm. Ebenso wie wir an den Verläufen der Sprungantwort auf die Differentialgleichung schließen konnten, können Experten aus den Verläufen des Bode-Diagramms auf den Frequenzgang (und damit auf die Übertragungsfunktion und damit auf die Differentialgleichung) schließen.\\
+Die Phasenverschiebung kann selbstverständlich auch mit Computeralgebra ausgerechnet werden.
+\subsection{Parametrische Darstellung}
+...
+\subsection{Nichtparametrische Darstellung}
+\subsubsection{Nyquist-Plot (Ortskurve)}
+%Realteil von G(iw)
+...
+\subsubsection{Bode-Plot}
+...
