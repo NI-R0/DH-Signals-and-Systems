@@ -1,6 +1,23 @@
 %TODO: Überarbeiten
-Die allgemeine explizite Form des Übertragungsoperators für ein lineares zeitinvariantes System ist (x(t) Formel Aufschrieb).
-Für unser konkretes System kann man das mit der symbolik-Toolbox in Matlab berechnen: syms t und expm liefert ....
-Die erzwungene Bewegung kann man aber nur dann explizit angeben, wenn man für u(tau) eine explizite Vorgabe hat. Das ist der Fall, wenn u(tau) beispielsweise ein Dirac-Impuls oder ... 
-oder ein Sinusimpuls ist. In einem solchen Fall kann man das Integral analytisch ausrechnen. In meiner Arbeit wählen wir die Step-Funktion. 
-Das heißt u(tau)=1 für tau>=0. Im konkreten erhalten wir die Formel, die ausgeplotet identisch ist, mit Darstellung in ...
+Die allgemeine explizite Form des Übertragungsoperators für ein lineares zeitinvariantes System sieht aus wie folgt:
+\begin{equation*}
+    \underline{x}(t) = e^{At}\underline{x_0}+\int_{0}^{t}e^{A(t- \tau )}bu(\tau )d\tau
+\end{equation*}
+\begin{equation*}
+    y(t) = c^{T}x(t)+du(t)
+\end{equation*}
+Für unser konkretes System kann man das mit der Symbolik-Toolbox und folgenden Befehlen in Matlab berechnen:\\
+\hspace*{0.5cm}\texttt{syms t}\\
+\hspace*{0.5cm}\texttt{expm(A*t)}\\
+Mit unserer Systemmatrix $A = [-0.1]$, dem Eingangsvektor $b = (-2.5)$, dem Ausgangsvektor $c = (1)$, dem Durchgangsfaktor $d = 0$ und dem Anfangswert $x_0 = 0$ erhält man:
+\begin{equation*}
+    \underline{x}(t) = \int_{0}^{t}-2.5*e^{\frac{\tau - t}{10}}*u(\tau )d\tau
+\end{equation*}
+\begin{equation*}
+    y(t) = x(t)
+\end{equation*}
+In unserer Arbeit wählen wir die Step-Funktion für den Eingang, das heißt $u(\tau ) = 1$ für $\tau \geq 0$. Im konkreten Fall erhalten wir mit dem Befehl\\ \texttt{int(-2.5*expm((tau - t)/10), tau, 0, t)}\\ die Formel:
+\begin{equation*}
+    25*e^{\frac{-t}{10}} -25
+\end{equation*}
+Diese ist geplottet identisch mit der Darstellung in Abbildung 1.

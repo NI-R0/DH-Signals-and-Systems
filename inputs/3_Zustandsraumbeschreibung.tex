@@ -22,14 +22,23 @@ Die Matrizen $A$, $B$, $C$, $D$ lassen sich in Matlab wie folgt generieren:\\
 
 
 \subsection{Unser System}
-Werden die obigen Befehle auf unser System angewendet, erhält man die Werte:
+Da Matlab mit den obigen Befehlen ungünstige Werte für $B$ und $C$ liefert, leiten wir die Werte aus der nach $\dot y$ umgestellten Differentialgleichung (Herleitung im Kapitel E-/A-Differentialgleichung) unseres Systems her: 
 \begin{equation*}
-  A = [-0.1] ; B = [2] ; C = [-1.25] ; D = 0
+  \dot y(t)= \frac{1}{10}(-y(t)-25u(t))
 \end{equation*}
-Aus diesen lässt sich die folgende Zustandsraumdarstellung herleiten:
+Wird umgeformt zu:
 \begin{equation*}
-  \dot \vec{x} = [-0.1][x_1] + [2]u
+  \dot y(t)= -\frac{1}{10}y(t)-2,5u(t)
+\end{equation*}
+Da unser System ein System 1. Ordnung ist, lassen sich aus dieser Form direkt die Werte für $A$, $B$, $C$ und $D$ ablesen. Somit ergeben sich folgende Werte:
+\begin{equation*}
+  A = [-0,1]; B = [-2,5]; C = [1]; D = 0
+\end{equation*}
+Für unser System wählen wir den Anfangswert x(0) = 0.
+Somit lässt sich die folgende Zustandsraumdarstellung herleiten:
+\begin{equation*}
+  \dot \vec{x} = [-0.1][x_1] + [-2.5]u
 \end{equation*}
 \begin{equation*}
-  y = [-1.25][x_1] + [0]u
+  y = [1][x_1] + [0]u
 \end{equation*}
