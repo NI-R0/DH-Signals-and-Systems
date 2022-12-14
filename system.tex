@@ -11,10 +11,11 @@
 \usepackage[ngerman]{babel}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
+\usepackage{makecell}
 
 \hyphenation{Differential-gleichung}
 \hyphenation{Über-tragungs-ope-ra-tors}
-\hyphenation{E/A-Differential-gleichung}
+\hyphenation{E/A-Dif-fe-ren-ti-al-glei-chung}
 
 \begin{document}
 
@@ -36,44 +37,50 @@
 
 % INPUTS
 
-\section{Einleitung}  %stimmt
-\input{inputs/Einleitung.tex}
+%TODO: ZEITSKALEN AUF K=100 und T=10 ändern
 
-\section*{Vorgehen in der Systemtheorie}   %eingefügt
-\input{inputs/VorgehenSystemthoerie.tex}
+\section{Einleitung}    % FERTIG
+\input{inputs/1_Einleitung.tex}
 
-\section{Physikalische Beschreibung/Umcodierung}   %stimmt
-\input{inputs/Physikalische Beschreibung-Umcodierung.tex}
+% \section*{Vorgehen in der Systemtheorie}
+% \input{inputs/E1_VorgehenSystemthoerie.tex}
 
-\section{Explizite Darstellung des Übertragungsoperators}    %stimmt
-\input{inputs/Explizite Darstellung des Übertragungsoperators.tex}
+\section{Physikalische Beschreibung/Umcodierung}
+\input{inputs/2_Physikalische Beschreibung-Umcodierung.tex}
 
-\section{Zustandsraumbeschreibung (implizite Systembeschreibung)}   %stimmt
-\input{inputs/Zustandsraumbeschreibung.tex}
+\newpage
+\section{Übertragungsfunktion}    % FERTIG
+\input{inputs/2.1_Übertragungsfunktion.tex}
 
-\section{Ein-/Ausgangsdifferentialgleichung}   %stimmt
-\input{inputs/Ein-Ausgangsdifferentialgleichung.tex}
+% \section{Explizite Darstellung des Übertragungsoperators}
+% \input{inputs/3_Explizite Darstellung des Übertragungsoperators.tex}
 
-\subsection*{Zustandsraumbeschreibung in Übertragungsfunktion} %eingefügt
-\input{inputs/ZustandsraumbeschreibunginÜbertragungsfunktion.tex}
+\section{Zustandsraumbeschreibung (implizite Systembeschreibung)}
+\input{inputs/4_Zustandsraumbeschreibung.tex}
 
-\section{Zusammenhänge der Funktionen $G(s)$, $g(t)$, $h(t)$ und $\frac{G(s)}{s}$}   %stimmt
-\input{inputs/ZusammenhangFunktionen.tex}
+\section{Ein-/Ausgangsdifferentialgleichung}
+\input{inputs/5_Ein-Ausgangsdifferentialgleichung.tex}
+
+\subsection*{Zustandsraumbeschreibung in Übertragungsfunktion}
+\input{inputs/E2_ZustandsraumbeschreibunginÜbertragungsfunktion.tex}
+
+\section{Zusammenhänge der Funktionen $G(s)$, $g(t)$, $h(t)$ und $\frac{G(s)}{s}$}
+\input{inputs/6_ZusammenhangFunktionen.tex}
 
 \section{Übertragungsfunktion/Sprungantwort}
-\input{inputs/Übertragungsfunktion-Sprungantwort.tex}
+\input{inputs/7_Übertragungsfunktion-Sprungantwort.tex}
 
-\section{Gewichtsfunktion/Impulsantwort} %NICHT SICHER
-\input{inputs/Gewichtsfunktion-Impulsantwort.tex}
+\section{Gewichtsfunktion/Impulsantwort}
+\input{inputs/8_Gewichtsfunktion-Impulsantwort.tex}
 
 \section{Frequenzgang}
-\input{inputs/frequenzgang.tex}
+\input{inputs/9_frequenzgang.tex}
 
 \section{Pol-Nullstellen-Plot}
-\input{inputs/pol-nullstellen-plot.tex}
+\input{inputs/10_pol-nullstellen-plot.tex}
 
-\section{Statische Kennlinie}%TODO: HBOX
-\input{inputs/statische-kennlinie.tex}
+\section{Statische Kennlinie}
+\input{inputs/11_statische-kennlinie.tex}
 
 
 \end{document}

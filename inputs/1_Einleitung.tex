@@ -1,0 +1,20 @@
+% Das System, welches im Folgenden behandelt wird hat die Übertragungsfunktion
+% \begin{equation*}
+%   G(s)=\frac{K}{T*s+1}
+% \end{equation*}\\
+% und mit den Werten $K=-25$ und $T=10$ ergibt sich daraus die neue Übertragungsfunktion
+% \begin{equation*}
+%   G(s)=\frac{-25}{10s+1} .
+% \end{equation*}\\
+% Um das System analysieren zu können, haben wir das System mit den entsprechenden Werten in Simulink simuliert und die Sprungantwort betrachet.\\
+% Erst danach haben wir mit Matlab gearbeitet und dort die entsprechenden Graphen plotten lassen. Mit Hilfe des Befehls \texttt{sys = tf([-25],[10 1])} haben wir unser System in Matlab erzeugt. Falls notwendig wird ein Sinus als Eingangssignal angenommen. %TODO: Stimmt das?
+% % Das System ist wie folgt zu klassifizieren:
+% %TODO: Klassifizierung
+
+Das System, welches im Folgenden behandelt wird ist das $PT_1$-Glied mit negativer Verstärkung. Es wird auch Verzögerungsglied 1. Ordnung genannt. Es weist sowohl P-Verhalten als auch T-Verhalten auf. Es kann durch folgende Differentialgleichung beschrieben werden:
+\begin{equation*}
+  y(t)+T* \dot y(t) = K*u(t)
+\end{equation*}
+$K$ steht hierbei für den Proportionalitäts- bzw. Verstärkunsfaktor des Systems und $T$ ist die Zeitkonstante.\\
+Bei unser System haben wir uns für die Werte $K=-25$ und $T=10$ entschieden.\\
+Um das System analysieren zu können, haben wir das System mit den entsprechenden Werten in Simulink simuliert und die Sprungantwort betrachet. Erst danach haben wir mit Matlab gearbeitet und dort die entsprechenden Graphen plotten lassen.
