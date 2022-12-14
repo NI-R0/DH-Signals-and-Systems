@@ -136,7 +136,17 @@
 % %Strukturbild dargestllte Blockschaltbild
 
 \subsection{Allgemein}
-
+Um die Zustandstaumdarstellung zu bestimmen, werden die Matrizen $A$, $B$, $C$ und $D$ benötigt. Diese stehen wie folgt mit dem System im Zusammenhang:
+\begin{equation*}
+  \dot x = Ax + Bu
+\end{equation*}
+\begin{equation*}
+  y = Cx + Du
+\end{equation*}
+Die Zustandsübergangsfunktion beinhaltet die Systemmatrix $A$ und die Eingangsmatrix $B$ und gliedert sich in den Eigenvorgang sowie den erzwungenen Vorgang. Im Folgenden ist diese Übergangsfunktion dargestellt:
+\begin{equation*}
+  \varphi (t,t_0,x_0,u) = e^{A(t-t_0)}x(t_0)
+\end{equation*}
 
 
 
