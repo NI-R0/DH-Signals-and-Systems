@@ -1,0 +1,11 @@
+Die Übertragungsfunktion ist die Systembeschreibung im Laplace-Bereich (auch Bildbereich genannt) und berücksichtigt die Anfangswerte nicht. Sie geht durch Laplace-Transformation aus der Eingangs- / Ausgangsdifferentialgleichung hervor, wobei die Anfangswerte auf 0 gesetzt werden. Folglich hat die Übertragungsfunktion eine geringere Aussagekraft als die E-/A-Differentialgleichung, bei der die Anfangswerte immer berücksichtigt werden. Die Übertragungsfunktion stellt das Verhältnis von Eingangs- und Ausgangssignal eines Systemes dar.\\
+Die Übertragungsfunktion unseres Systems hat die folgende Form:
+\begin{equation*}
+    G(s)=\frac{Y(s)}{U(s)}=\frac{K}{T*s+1}
+\end{equation*}\\
+$K$ steht hierbei für den Verstärkunsfaktor des Eingangssignals und $T$ für die Zeitkonstante.
+Mit den von uns ausgewählten Werten $K=-25$ und $T=10$ ergibt sich daraus die neue Übertragungsfunktion:
+\begin{equation*}
+    G(s)=\frac{-25}{10s+1} .
+\end{equation*}\\
+Mit Hilfe des Befehls \texttt{sys = tf([-25],[10 1])} lässt sich die Übertragungsfunktion in Matlab erzeugen.

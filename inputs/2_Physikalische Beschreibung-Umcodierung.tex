@@ -1,0 +1,32 @@
+Unser System weist sowohl P- als auch T-Verhalten auf und ist ein Verzögerungsglied 1. Ordnung. In der Praxis lässt sich mit diesem System beispielsweise der Kühlvorgang in einer Tiefkühltruhe beschreiben.
+
+\vspace*{0.5cm}
+\begin{center}
+  \begin{tabular}{l| |l|l|l}
+    & Physikalisch & Normiert   & Systemtheoretisch \\\hline\hline
+    & & & \\
+    Eingang   & (Kühl-)Energie  & $Wh$ & $u$ \\
+    Ausgang   & Temperatur      & °C                & $y$ \\
+    Zustand   & Temperatur      & °C                & $x_{1}$ \\
+    Parameter & \makecell[l]{Niedrigste Temperatur des\\ Kühlgerätes,\\Leistung des Kühlgerätes}                & °C, $\frac{BTU}{h}$    & $K$, $T_{1}$ \\
+  \end{tabular}
+\end{center}
+\vspace*{0.5cm}
+\noindent{}Die Wahl der Zeitkonstante $h$ ist naheliegend, da Kühlgeräte die Temperatur normalerweise nur langfristig (im Stundenbereich) ändern können.\\
+Die Normierung und Festlegung der Einheiten ist wichtig, damit die Plots mit den richtigen Zeitskalen beschriftet werden können.
+
+%Eine Normierung des Eingangs auf den Bereich 0 bis 100% ist häufig sinnvoll, da dann die statische Verstärkung angibt, auf welchem Endwert ich bei 100% (also max. Eingang) lande (bei P-Gliedern).
+
+%ACHSEN DER PLOTS RICHTIG BESCHRIFTEN, damit die Einheiten richtig abgelesen werden können!!!! Beschriften: [t]=s oder t in s oder t/s oder "Zeit in Sekunden"
+
+%Matlab Befehle: labelx/yaxis: entweder t/s oder t in s/sec./Sekunden oder Zeit in Sekunden
+
+  %CHRIS:
+  % \begin{tabular}{l|l|l|l}
+        %     \centering
+        %         0 & physikalische Darstellung & normierte Darstellung & systemtheoretische Darstellung  \\ \hline
+        %         Eingang & Durchfluss Wasserhahn & 0-100\% & u \hline
+        %         Ausgang & Höhe des Wassers & V/V_ges & y \hline
+        %         Zustand & Höhe des Wassers & cfaef & x_1, x_2 ... je nach Ordnung \hline
+        %         Parameter & Masse, Länge,Trägheitsmoment, Kapazität, Induktivität & T, $T_D$, D
+        % \end{tabular}
