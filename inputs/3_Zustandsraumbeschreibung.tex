@@ -1,153 +1,35 @@
-% Mein System in neuer Zustandsraumdarstellung nach Transformation
-% -> Zusandsraumdarstellung
-% %Gewöhnliche Differenzialgleichungen eines Übertragungssystems
-
-% %Beschreibung linearer Systeme im komplexen Frequenzbereich
-
-% %Numerische Beschreibung linearer und nichtlinearer Systeme
-
-% Standard-Übertragungsfunktion eines 
-% Verzögerungsglied mit proportionalen Übertragungsverhalten.
-% \subsection*{Allgemein}
-
-% \begin{equation*}
-%   \ddot y(t)= \frac{1}{a_2}(-a_0\dot y(t)-a_1 y(t) +b_0u(t))
-% \end{equation*}
-
-% Eine Differenzialgleichung n-ter Ordnung benötigt zur Lösung n Integrationen. 
-% Nach dem Blockschaltbild zur Lösung der Differenzialgleichung 1. Ordnung ergibt sich eine Zustandsvariable als Ausgang der Integratore. 
-% Durch Substitution wird die Ableitung von $y(t)$ durch die Bezeichnung der Zustandsvariable $x(t)$ wie folgt eingesetzt: 
-% \begin{equation*}
-%   x_1(t) = y(t); x_2(t) = \dot y(t)
-% \end{equation*}
-
-% Damit lautet die Differentialgleichung mit der eingeführten neuen Bezeichnungder Zustandsvariable:
-
-% \begin{equation*}
-%   \ddot y(t)= \frac{1}{a_2}(-a_0 x_1(t)-a_1 x_2(t) +b_0u(t))
-% \end{equation*}
-
-% Daraus können die Zustandsgrößen gebildet werden.
-
-% \begin{equation*}
-%   \dot x_1 = \dot y = x_2
-% \end{equation*}
-
-% \begin{equation*}
-%   \dot x_2= \ddot y = -\frac{a_0}{a_2}x_1--\frac{a_1}{a_2}x_1+\frac{b_0}{a_2}u
-% \end{equation*}
-
-% Die Zustandsgrößen $x_1$ und $x_1$ bilden den sogenannten Zustandsvektor $\vec x$.
-
-% Diese Gleichungen werden als Vektordifferenzialgleichungen in Matizenform wie folgt geschrieben:
-% \[
-%   \begin{bmatrix}
-%     \dot x_1\\
-%     \dot x_2
-%   \end{bmatrix}
-%    =
-%   \begin{bmatrix}
-%      0                  & 1             \\
-%      -\frac{a_0}{a_2}   & -\frac{a_1}{a_2}
-%   \end{bmatrix}
-%   *
-%   \begin{bmatrix}
-%     x_1  \\
-%     x_2
-%   \end{bmatrix}
-%   +
-%   \begin{bmatrix}
-%     0               \\
-%     \frac{b_0}{a_2}
-%   \end{bmatrix}
-%   *u(1)
-% \]
-%  und die Ausgangsgleichung:
-% \begin{align*}
-%   \vec y(t) =
-%   \begin{bmatrix}
-%     1     & 0
-%   \end{bmatrix}
-%   *
-%   \begin{bmatrix}
-%     x_1     \\
-%     x_2
-%   \end{bmatrix}
-% \end{align*}
-
-% \subsection*{Unser System}
-
-% \begin{equation*}
-%   \dot y(t)= \frac{1}{10}(-y(t)-25u(t))
-% \end{equation*}
-
-% \begin{equation*}
-%   x_1 =y(t)
-% \end{equation*}
-
-% \begin{equation*}
-%   \dot y(t)= \frac{1}{10}(-x_1(t)-25u(t))
-% \end{equation*}
-
-% \begin{equation*}
-%   \dot x_1 = \dot y
-% \end{equation*}
-
-% \begin{equation*}
-%   \dot x_1= \frac{1}{10}(-x_1(t)-25u(t))
-% \end{equation*}
-
-% \begin{align*}
-%   \begin{bmatrix}
-%     \dot x_1
-%   \end{bmatrix}
-%   =
-%   \begin{bmatrix}
-%     -\frac{1}{10}
-%   \end{bmatrix}
-%   *
-%   \begin{bmatrix}
-%     x_1
-%   \end{bmatrix}
-%   +
-%   \begin{bmatrix}
-%     -\frac{25}{10}
-%   \end{bmatrix}
-%   *
-%   \begin{bmatrix}
-%     u(t)
-%   \end{bmatrix}
-% \end{align*}
-
-% \begin{align*}
-%     \vec y(t)
-%   =
-%   \begin{bmatrix}
-%     1
-%   \end{bmatrix}
-%   *
-%   \begin{bmatrix}
-%     x_1
-%   \end{bmatrix}
-% \end{align*}
-
-
-
-% %Strukturbild dargestllte Blockschaltbild
-
 \subsection{Allgemein}
 Um die Zustandstaumdarstellung zu bestimmen, werden die Matrizen $A$, $B$, $C$ und $D$ benötigt. Diese stehen wie folgt mit dem System im Zusammenhang:
 \begin{equation*}
-  \dot x = Ax + Bu
+  \dot\vec{x} = A\vec{x} + B\vec{u}
 \end{equation*}
 \begin{equation*}
-  y = Cx + Du
+  y = C\vec{x} + D\vec{u}
 \end{equation*}
 Die Zustandsübergangsfunktion beinhaltet die Systemmatrix $A$ und die Eingangsmatrix $B$ und gliedert sich in den Eigenvorgang sowie den erzwungenen Vorgang. Im Folgenden ist diese Übergangsfunktion dargestellt:
 \begin{equation*}
-  \varphi (t,t_0,x_0,u) = e^{A(t-t_0)}x(t_0)
+  \varphi (t,t_0,x_0,u) = e^{A(t-t_0)}x(t_0)+\int_{t_0}^{t}e^{A\tau }Bu(t-\tau )d\tau
 \end{equation*}
+Der Übertragungsoperator bezieht zusätzlich die Ausgangsmatrix $C$ und die Durchgriffsmatrix $D$ mit ein.
+\begin{equation*}
+  \psi (t,t_0,x_0,u_{[t_0,t)}) = Ce^{A(t-t_0)}x(t_0)+\int_{t_0}^{t}Ce^{A\tau }Bu(t-\tau )d\tau + Du(t)
+\end{equation*}
+\vspace*{0.5cm}
+Die Matrizen $A$, $B$, $C$, $D$ lassen sich in Matlab wie folgt generieren:\\
+\hspace*{0.5cm}\texttt{sys = tf([-25],[10 1])}\\
+\hspace*{0.5cm}\texttt{ss(sys)}
 
 
 
 \subsection{Unser System}
+Werden die obigen Befehle auf unser System angewendet, erhält man die Werte:
+\begin{equation*}
+  A = [-0.1] ; B = [2] ; C = [-1.25] ; D = 0
+\end{equation*}
+Aus diesen lässt sich die folgende Zustandsraumdarstellung herleiten:
+\begin{equation*}
+  \dot \vec{x} = [-0.1][x_1] + [2]u
+\end{equation*}
+\begin{equation*}
+  y = [-1.25][x_1] + [0]u
+\end{equation*}
