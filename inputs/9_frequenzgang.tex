@@ -1,3 +1,4 @@
+\subsection{Parametrische Darstellung}
 Den Frequenzgang erhält man indem man die komplexe Variable $s$ durch iOmega ($i\omega$) ersetzt. \\
 Das ist gleichbedeutend mit einem Schnitt der komplexen Funktion $G(s)$ entlang der imaginären Achse.
 Damit wird jeder Kreisfrequenz $\omega$ eine komplexe Zahl $G(i\omega)$ zugeordnet. 
@@ -19,12 +20,41 @@ gegeben. %TODO: KONTROLLE und Block
 %TODO: Schaltung einfügen
 %Man stellt eine Frequenz ein und schaut am Ausgang die Amplitudenverstärkung und die Phasenverschiebung an. Hat der Eingangssinus die Amplitude 1, kann ich die Verstärkung am Ausgang direkt ablesen. Den erhaltenen Punkt trägt man in das Bode-Diagramm ein. Danach wiederholt man das Experiment mit einer anderen Frequenz. Hat man genügend Punkte, so verbindet man diese und erhält das Bode-Diagramm. Ebenso wie wir an den Verläufen der Sprungantwort auf die Differentialgleichung schließen konnten, können Experten aus den Verläufen des Bode-Diagramms auf den Frequenzgang (und damit auf die Übertragungsfunktion und damit auf die Differentialgleichung) schließen.\\
 %Die Phasenverschiebung kann selbstverständlich auch mit Computeralgebra ausgerechnet werden.
-\subsection{Parametrische Darstellung}
-Experimentell kann der Frequenzgang durch folgende Simulink Schaltung aufgenommen werden:
- 
 \subsection{Nichtparametrische Darstellung}
+Experimentell kann der Frequenzgang durch folgende Simulink Schaltung aufgenommen werden:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{image/FrequenzgangSchaltung.pdf}
+    \caption{Frequenzgang: Simulink Schaltung}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{image/FrequenzgangAusgang.pdf}
+    \caption{Frequenzgang: Plot mit Simulink}
+\end{figure}
+
+Am Eingangssinus wird eine Frequenz eingestellt und am Ausgang die Amplituden-
+Verstärkung und die Phasenverschiebung betrachtet.
+Hat der Eingang die Amplitude 1, kann man die AusgangsverstÄrkung direkt
+ablesen.
+Das Experiment wird mit verschiedenen Frequenz wiederholt und die jeweiligen
+Ergebnisse werden dabei als Punkte in die folgenden Diagramme eingetragen.
 \subsubsection{Nyquist-Plot (Ortskurve)}
-%Realteil von G(iw)
-...
+Beim Nyquist-Plot ist auf der X-Achse der Realteil der gemessenen Punkte
+und auf der Y-Achse der Imaginärteil, bei steigender Frequenz $\omega$ zu sehen.
+Dieser lässt sich in Matlab mit folgendem Befehl generieren:\\
+\texttt{nyquist(sys)}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{image/NyquistPlot.pdf}
+    \caption{Frequenzgang: Nyquist Plot}
+\end{figure}
 \subsubsection{Bode-Plot}
-...
+In Matlab lässt sich der Bode Plot mit dem Befehl\\
+\texttt{bode(sys)}\\
+erzeugen.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=8cm]{image/NyquistPlot.pdf}
+    \caption{Frequenzgang: Bode-Plot}
+\end{figure}
