@@ -1,11 +1,13 @@
 %TODO: Latex Zeilenumbrüche korrigieren
 Die Übertragungsfunktion ist die Systembeschreibung im Laplace-Bereich.\\
 Sie berücksichtigt die Anfangswerte nicht. Sie geht aus der E/A-Differential\-gleichung hervor, wobei die Anfangswerte auf Null gesetzt werden. Folglich hat sie eine geringere Aussagekraft, als die E/A-Differentialgleichung, bei der die Anfangswerte immer mit dabei stehen. Es ist ein Leichtes aus der Übertragungsfunktion auf die E/A-Differentialgleichung zu schließen.
-% Durch Überkreuzmultiplikation von $G(s)=\frac{Y(s)}{U(s)}=(...)$ gelangt man zu $(...)Y(s)=(...)U(s)$ und unter Beachtung von $s=\frac{d}{dt}$ zu $\ddot{y}+y=\dot{u}+u$ mit $y(0_{-})=y_{0}$, $y(0_{-})=\dot{y}_{0}$ und $u(0_{-})=u_{0}$. %TODO: ????
-\subsection{Parametrische Darstellung} %TODO
-%CHRIS:
+
+\subsection{Parametrische Darstellung}
 Die Parametrische Darstellung erhält man, indem man die Laplace-Rücktransformierte der Übertragungsfunktion bildet.
 Das macht man wie folgt:\\
+
+%FORMELN
+
 Die Symbolic Toolbox macht die Ausführung symbolischer mathematischer Berechnungen möglich.\\
 Mit dem Befehl\\
 \texttt{syms s t}\\
@@ -24,7 +26,7 @@ ein.
 
 %Alternativ kann die Übergangsfunktion aus der Gewichtsfunktion durch Integration erhalten werden.
 
-Diese Sprungantwort wäre dann:
+Diese Sprungantwort wär dann:
 \begin{equation*}
     h(t)=25*e^{\frac{-t}{10}}-25
 \end{equation*}
@@ -32,7 +34,7 @@ Diese Sprungantwort wäre dann:
 Hier graphisch dargestellt:
 \begin{figure}[H]
     \centering
-    \includegraphics[width=5cm]{image/Übergangsfunktion.eps}
+    \includegraphics[width=8cm]{image/Übergangsfunktion.eps}
     \caption{Übergangsfunktion $h(t)$}
 \end{figure}
 
