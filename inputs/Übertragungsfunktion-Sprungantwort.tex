@@ -30,28 +30,21 @@ Diese Sprungantwort wäre dann:
 \end{equation*}
 
 Hier graphisch dargestellt:
-\begin{figure}[h]
+\begin{figure}[H]
     \centering
     \includegraphics[width=5cm]{image/Übergangsfunktion.eps}
     \caption{Übergangsfunktion $h(t)$}
 \end{figure}
 
-\begin{figure}[!ht]
-	\centering
- 	\includegraphics[width=10cm]{image/Übergangsfunktion}
-	\caption{Übergangsfunktion $h(t)$}
-\end{figure}
-
 
 \subsection{Nichtparametrische Darstellung}
 \subsubsection{Plot mit Matlab}
-%CHRIS:
-% Mit dem Wissen der Parametrischen Darstellung 
-%t=[0:0.1:10]
-%plot(t, Antwort)
-%Da t ein Vektor ist, muss man beim Multiplizieren das Punktprodukt (Hadammad-Produkt) verwenden.
-%Alternativ kann ich den Befehl fplot() verwenden.
-%Mit den Befehlen xlabel und ylabel kann ich meine Achsen beschriften.
+
+Mit dem Wissen der Parametrischen Darstellung\\ 
+\texttt{t=[0:0.1:10]}\\
+\texttt{plot(t, (25)*exp(-t/10)-25)}\\
+Da t ein Vektor ist, muss man beim Multiplizieren das Punktprodukt (Hadammad-Produkt) verwenden.
+
         
 %Die Control System Toolbox dient der systematischen Analyse, dem Entwurf und der Optimierung linearer Systeme.\\
 %Mit dem folgenden Matlab-Skript kann ich die Übertragungsfunktion G(s) in MATLAB eingeben.
@@ -59,8 +52,12 @@ Hier graphisch dargestellt:
 %Lässt man sich G(s) in der Konsole anzeigen, wird diese folgendermaßen dargestellt.
                     
 %Durch den Befehl \texttt{step(sys)} öffnet MATLAB ein neues Fenster mit der passenden Sprungantwort h(s) zu G(s) und stellt diese folgendermaßen dar.
-...
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=5cm]{image/PlotMitMatLab.eps}
+    \caption{Sprungantwort Plot mit Matlab}
+\end{figure}
 \subsubsection{Plot mit Step-Funktion}
-...
+Denselben Plot bekommt
 \subsubsection{Plot mit Simulink}
 ...
