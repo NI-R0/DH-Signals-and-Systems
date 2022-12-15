@@ -1,37 +1,85 @@
-Natürlich kann die Umformung von der Zustandsraumbeschreibung in die Übertragungsfunktion auch mathematisch durchgeführt werden:
-Gleichung 1:
-\begin{equation}
-	\dot{x}(t)=A*x(t)+B*u(t)
-\end{equation}
-wird transformiert in:
-\begin{equation}
-	s*X(s)=A*X(s)+B*U(s)
-\end{equation}
-Gleichung 2:
-\begin{equation}
-	y_{a}(t)=C*x(t)+D*u(t)
-\end{equation}
-wird transformiert in:
-\begin{equation}
-	Y_{a}(s)=C*x(s)+D*U(s)
-\end{equation}
-bei Gleichung 1 wird  das $x(s)$ isoliert:
-\begin{equation}
-	s*X(s)=A*X(s)+B*U(s)
-\end{equation}
-\begin{equation}
-	X(s)*(sE-A)=B*U(s)
-\end{equation}
-wobei $E$ die Einheitsmatrix ist.
-\begin{equation}
-	X(s)=(sE-a)^{-1}U(s)
-\end{equation}
-Im nächsten Schritt wird das $x(s)$ der Gleichung 1 in das $x(s)$ der Gleichung 2 eingesetzt:
-\begin{equation}
-	Y_{a}(s)=C*(sE-a)^{-1}U(s)+D*U(s)
-\end{equation}
-Umgeformt ergibt es die Formel:
-\begin{equation}
-	G(s)=\frac{Y_{a}(s)}{U(s)}=C*(sE-A)^{-1}*B+D
-\end{equation}
+Natürlich kann die Umformung von der Zustandsraumbeschreibung in die Übertragungsfunktion auch mathematisch durchgeführt werden:\\
+Von den Ausgangsgleichungen:
+\begin{equation*}
+	\dot{x}(t) = Ax(t) + Bu(t)
+\end{equation*}
+\begin{equation*}
+	y(t) = Cx(t) + Du(t) \text{, bzw. } y(t) = c^{T}\lambda \text{ (SISO), bzw. } y(t) = C\lambda \text{ (MIMO)}
+\end{equation*}
+gelangt man duch Laplace-Transormation zu:
+\begin{equation*}
+	sX(s) = AX(s) + BU(s)
+\end{equation*}
+\begin{equation*}
+	\fbox{$Y(s) = c^{T}X(s) \text{ (SISO)}$} \text{ , bzw. } Y(s) = CX(s) \text{ (MIMO)}
+\end{equation*}
+Die Gleichungen von $Y(s)$ unterscheiden sich zwischen SISO- und MIMO-Systemen in dem Faktor vor $X(s)$. Da man $D=0$ wählen kann fällt der hintere Teil zudem weg. Im weiteren Verlauf wird der Einfachheit halber nur die oben durch einen Kasten markierte Formel eines SISO-Systems für die Rechnung verwendet. Die restlichen Schritte sind bei einem MIMO-System gleich.\\\\
+In Gleichung 1 wird das $X(s)$ isoliert:
+\begin{equation*}
+	(sE-A)X(s) = BU(s)
+\end{equation*}
+\begin{equation*}
+	X(s) = BU(s) * (sE-A)^{-1}
+\end{equation*}
+Eingesetzt in Gleichung 2 erhält man die Formel, um von der Zustandsraumdarstellung in eine DGL umzurechnen:
+\begin{equation*}
+	Y(s) = c^{T}(sE-A)^{-1}BU(s)
+\end{equation*}
+Um die inverse Matrix besser berechnen zu können kann die Formel umgeschrieben werden zu:
+\begin{equation*}
+	Y(s) = c^{T}\frac{adj(sE-A)}{det(sE-A)}BU(s)
+\end{equation*}
+Die Übertragungsfunktion lässt sich hieraus errechnen durch:
+\begin{equation*}
+	G(s) = \frac{Y(s)}{U(s)} = c^{T}\frac{adj(sE-A)}{det(sE-A)}B
+\end{equation*}
+Die Adjunkte in dieser Formel kann folgendermaßen errechnet werden:
+\begin{equation*}
+	adj(A) = cof(A)^{T}
+\end{equation*}
+Die einzelnen Elemente $A_{ij}$ der Kofaktormatrix ergeben sich wiederum aus
+\begin{equation*}
+	A_{ij} = (-1)^{i+j}*det_{ij}(A)
+\end{equation*}
+wobei $det_{ij}(A)$ durch Streichen der i-ten Zeile und j-ten Spalte entsteht.
+Die Determinante einer 2x2-Matrix $A$ berrechnet man durch:
+\begin{equation*}
+	A = \begin{bmatrix}a&b\\c&d\end{bmatrix} -> det(A) = |A| = a*d - c*b
+\end{equation*}
+% Gleichung 1:
+% \begin{equation*}
+% 	\dot{x}(t)=A*x(t)+B*u(t)
+% \end{equation*}
+% wird transformiert in:
+% \begin{equation*}
+% 	s*X(s)=A*X(s)+B*U(s)
+% \end{equation*}
+% Gleichung 2:
+% \begin{equation*}
+% 	y_{a}(t)=C*x(t)+D*u(t)
+% \end{equation*}
+% wird transformiert in:
+% \begin{equation*}
+% 	Y_{a}(s)=C*x(s)+D*U(s)
+% \end{equation*}
+% bei Gleichung 1 wird  das $x(s)$ isoliert:
+% \begin{equation*}
+% 	s*X(s)=A*X(s)+B*U(s)
+% \end{equation*}
+% \begin{equation*}
+% 	X(s)*(sE-A)=B*U(s)
+% \end{equation*}
+% wobei $E$ die Einheitsmatrix ist.
+% \begin{equation*}
+% 	X(s)=(sE-a)^{-1}U(s)
+% \end{equation*}
+% Im nächsten Schritt wird das $x(s)$ der Gleichung 1 in das $x(s)$ der Gleichung 2 eingesetzt:
+% \begin{equation*}
+% 	Y_{a}(s)=C*(sE-a)^{-1}U(s)+D*U(s)
+% \end{equation*}
+% Umgeformt ergibt es die Formel:
+% \begin{equation*}
+% 	G(s)=\frac{Y_{a}(s)}{U(s)}=C*(sE-A)^{-1}*B+D
+% \end{equation*}
+
 Falls man die Differentialgleichung erhalten möchten muss man die gewonnene Übertragungsfunktion in die Differentialgleichung umwandeln.
