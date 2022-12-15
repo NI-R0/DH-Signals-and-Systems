@@ -1,51 +1,72 @@
-%TODO: Latex Zeilenumbrüche korrigieren
-Die Übertragungsfunktion ist die Systembeschreibung im Laplace-Bereich.\\
-Sie berücksichtigt die Anfangswerte nicht. Sie geht aus der E/A-Differential\-gleichung hervor, wobei die Anfangswerte auf Null gesetzt werden. Folglich hat sie eine geringere Aussagekraft, als die E/A-Differentialgleichung, bei der die Anfangswerte immer mit dabei stehen. Es ist ein Leichtes aus der Übertragungsfunktion auf die E/A-Differentialgleichung zu schließen.
-
 \subsection{Parametrische Darstellung}
-Die Parametrische Darstellung erhält man, indem man die Laplace-Rücktransformierte der Übertragungsfunktion bildet.
-Das macht man wie folgt:\\
-
-%FORMELN
-
-Die Symbolic Toolbox macht die Ausführung symbolischer mathematischer Berechnungen möglich.\\
-Mit dem Befehl\\
-\texttt{syms s t}\\
-erstelle ich mir eine symbolische Variable s und t.\\
-Mit\\
-\texttt{G(s)=(-25)/(10*s+1)}\\
-gebe ich die Übertragungsfunktion G(s) ein.
-
-Alternativ kann ich die Sprungantwort h(t) durch Integration der Übertragungsfunktion bestimmen, gebe ich den Befehl \\
-\texttt{ilaplace(G(s)/s)}\\
-ein.
-
-%ICH:
-%ilaplace(G(s)/s), alternativ kann h(t) auch durch Integration von G(t) berechnet werden. h(t)=int(g(t))
-%Möchte ich mein Ergebnis g(t) weiter verwenden und nicht ans benutzen, dann definiere ich mir die symbolische Funktion syms g(t)
-
-%Alternativ kann die Übergangsfunktion aus der Gewichtsfunktion durch Integration erhalten werden.
-
-Diese Sprungantwort wär dann:
+Die Übergangsfunktion $h(t)$ erhält man, indem man die Laplace-Rücktransformierte der Übertragungsfunktion bildet. In Matlab lässt sich das durch folgende Befehle bewerkstelligen:\\
+\hspace*{0.5cm}\texttt{syms s t}\\
+\hspace*{0.5cm}\texttt{G(s) = -25/(10*s+1)}\\
+\hspace*{0.5cm}\texttt{h(t) = ilaplace(G(s)/s)}\\
+Alternativ lässt sich die Übertragungsfunktion auch durch Integration der Gewichtsfunktion berechnen. In Matlab benötigt man dafür folgende Befehle:\\
+\hspace*{0.5cm}\texttt{g(t) = ilaplace(G(s))}\\
+\hspace*{0.5cm}\texttt{h(t) = int(g(t), 0, t)}\\
+Beide Berechnungen liefern uns das Ergebnis:
 \begin{equation*}
-    h(t)=25*e^{\frac{-t}{10}}-25
+    h(t) = 25*e^{\frac{-t}{10}}-25
 \end{equation*}
 
-Hier graphisch dargestellt:
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=8cm]{image/Übergangsfunktion.eps}
-    \caption{Übergangsfunktion $h(t)$}
-\end{figure}
+% Hier graphisch dargestellt:
+% \begin{figure}[H]
+%     \centering
+%     \includegraphics[width=8cm]{image/Übergangsfunktion.eps}
+%     \caption{Übergangsfunktion $h(t)$}
+% \end{figure}
 
 
 \subsection{Nichtparametrische Darstellung}
 \subsubsection{Plot mit Matlab}
-
-Mit dem Wissen der Parametrischen Darstellung\\ 
-\texttt{t=[0:0.1:10]}\\
+Nach der Berechnung der Übergangsfunktion lässt sich diese durch folgende Befehle in Matlab plotten:\\
+\texttt{t=[0:10:100]}\\
 \texttt{plot(t, (25)*exp(-t/10)-25)}\\
-Da t ein Vektor ist, muss man beim Multiplizieren das Punktprodukt (Hadammad-Produkt) verwenden.
+Durch diese Befehle liefert Matlab folgendes Ergebnis (siehe Abbildung 1):
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images_2/Übergangsfunktion/Übergangsfkt_plot_matlab.eps}
+    \caption{Sprungantwort: Plot mit Matlab}
+\end{figure}
+
+\subsubsection{Plot mit Step-Funktion}
+Den selben Plot erhält man in Matlab auch über die \texttt{step}-Funktion. Diese lässt sich durch folgende Befehle anzeigen:\\
+\hspace*{0.5cm}\texttt{sys = tf([-25],[10 1])}\\
+\hspace*{0.5cm}\texttt{step(sys)}\\
+Das von Matlab gelieferte Ergebnis ist in Abbildung 2 dargestellt.
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=12cm]{images_2/Übergangsfunktion/Übergangsfkt_plot_stepfunktion.eps}
+    \caption{Sprungantwort: Plot mit Step-Funktion}
+\end{figure}
+
+\subsubsection{Plot mit Simulink}
+Das selbe Ergebnis lässt sich ebenfalls in Simulink durch folgende Schaltung erzielen:
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=13cm]{images_2/Übergangsfunktion/simulink-schaltung.png}
+    \caption{Sprungantwort: Simulink Schaltung}
+\end{figure}
+\begin{figure}[H]
+    \centering
+    \includegraphics[width=10cm]{images_2/Übergangsfunktion/übergangsfkt_simulink-plot.png}
+    \caption{Sprungantwort: Plot mit Simulink}
+\end{figure}
+
+
+
+
+
+
+
+
+
+
+
+
+% Da t ein Vektor ist, muss man beim Multiplizieren das Punktprodukt (Hadammad-Produkt) verwenden.
 
         
 %Die Control System Toolbox dient der systematischen Analyse, dem Entwurf und der Optimierung linearer Systeme.\\
@@ -54,27 +75,6 @@ Da t ein Vektor ist, muss man beim Multiplizieren das Punktprodukt (Hadammad-Pro
 %Lässt man sich G(s) in der Konsole anzeigen, wird diese folgendermaßen dargestellt.
                     
 %Durch den Befehl \texttt{step(sys)} öffnet MATLAB ein neues Fenster mit der passenden Sprungantwort h(s) zu G(s) und stellt diese folgendermaßen dar.
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=5cm]{image/PlotMitMatLab.eps}
-    \caption{Sprungantwort: Plot mit Matlab}
-\end{figure}
-\subsubsection{Plot mit Step-Funktion}
-\texttt{sys = tf([-25], [10 1])}\\
-\texttt{step(sys)}\\
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=8cm]{image/PlotMitStepFunktion.eps}
-    \caption{Sprungantwort: Plot mit Step Funktion}
-\end{figure}
-\subsubsection{Plot mit Simulink}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=8cm]{image/Übergangsfunktion_Simulink.pdf}
-    \caption{Sprungantwort: Simulink Schaltung}
-\end{figure}
-\begin{figure}[H]
-    \centering
-    \includegraphics[width=8cm]{image/PlotmitSimulinkSprung.pdf}
-    \caption{Sprungantwort: Plot mit Simulink}
-\end{figure}
+
+
+
